@@ -8,16 +8,16 @@ public class Game : MonoBehaviour
     private void Update()
     {
         if (Input.GetKey(KeyCode.W)) {
-            _player.move(Direction.Up);
+            _player.AddForce(ForceDirection.Up);
         }
-        if (Input.GetKey(KeyCode.D)) {
-            _player.move(Direction.Right);
-        }
+        //if (Input.GetKey(KeyCode.D)) {
+        //    _player.move(ForceDirection.Right);
+        //}
         if (Input.GetKey(KeyCode.S)) {
-            _player.move(Direction.Bottom);
+            _player.AddForce(ForceDirection.Down);
         }
-        if (Input.GetKey(KeyCode.A)) {
-            _player.move(Direction.Left);
-        }
+        //if (Input.GetKey(KeyCode.A)) {
+        //    _player.move(ForceDirection.Left);
+        //}
     }
 }
