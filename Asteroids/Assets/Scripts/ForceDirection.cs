@@ -8,15 +8,15 @@ public enum ForceDirection
     Down
 }
 
-public static class DirectionExtensions
+public static class ForceDirectionExtensions
 {
-    private static Vector3[] _movements = {
-        new Vector3(0f, 50f, 0f),
-        new Vector3(0f, -50f, 0f),
+    private static Vector3[] _forceVectors = {
+        new Vector3(0f, 20f, 0f),
+        new Vector3(0f, -20f, 0f),
     };
 
-    public static Vector3 GetForce(this ForceDirection direction)
+    public static Vector3 GetForce(this ForceDirection forceDirection)
     {
-        return _movements[(int)direction];
+        return _forceVectors[(int)forceDirection];
     }
 }

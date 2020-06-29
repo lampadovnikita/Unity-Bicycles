@@ -9,7 +9,13 @@ public class Player : MonoBehaviour
         _rigidbody2D = GetComponent<Rigidbody2D>();
     }
 
-    public void AddForce(ForceDirection direction) {
-        _rigidbody2D.AddForce(direction.GetForce());
+    public void AddForce(ForceDirection forceDirection)
+    {
+        _rigidbody2D.AddForce(forceDirection.GetForce());
+    }
+
+    public void AddTorque(TorqueDirection torqueDirection)
+    {
+        _rigidbody2D.AddTorque(torqueDirection.GetTorque());
     }
 }
