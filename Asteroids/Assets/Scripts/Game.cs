@@ -3,21 +3,21 @@
 public class Game : MonoBehaviour
 {
     [SerializeField]
-    private Player player;
+    private Player _player;
 
     private void Update()
     {
         if (Input.GetKey(KeyCode.W)) {
-            player.move(Direction.Up);
+            _player.move(Direction.Up);
         }
         if (Input.GetKey(KeyCode.D)) {
-            player.move(Direction.Right);
+            _player.move(Direction.Right);
         }
         if (Input.GetKey(KeyCode.S)) {
-            player.move(Direction.Bottom);
+            _player.move(Direction.Bottom);
         }
         if (Input.GetKey(KeyCode.A)) {
-            player.move(Direction.Left);
+            _player.move(Direction.Left);
         }
     }
 }
