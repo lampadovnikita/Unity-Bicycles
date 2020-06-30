@@ -11,13 +11,13 @@ public class Game : MonoBehaviour
             _player.AddForce(ForceDirection.Up);
         }
         if (Input.GetAxisRaw("Horizontal") > 0) {
-            _player.AddTorque(TorqueDirection.Right);
+            _player.AddTorque(RotationDirection.Right);
         }
         if (Input.GetAxisRaw("Vertical") < 0) {
             _player.AddForce(ForceDirection.Down);
         }
         if (Input.GetAxisRaw("Horizontal") < 0) {
-            _player.AddTorque(TorqueDirection.Left);
+            _player.AddTorque(RotationDirection.Left);
         }
     }
 }
