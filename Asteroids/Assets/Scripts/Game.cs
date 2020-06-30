@@ -5,7 +5,7 @@ public class Game : MonoBehaviour
     [SerializeField]
     private Player _player = default;
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (Input.GetKey(KeyCode.W)) {
             _player.AddForce(ForceDirection.Up);
