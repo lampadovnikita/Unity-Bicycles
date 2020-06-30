@@ -8,16 +8,16 @@ public class Game : MonoBehaviour
     private void FixedUpdate()
     {
         if (Input.GetAxisRaw("Vertical") > 0) {
-            _player.AddForce(ForceDirection.Up);
+            _player.AddRelativeForce(ForceDirection.Up);
         }
         if (Input.GetAxisRaw("Horizontal") > 0) {
-            _player.AddTorque(RotationDirection.Right);
+            _player.AddRotation(RotationDirection.Right);
         }
         if (Input.GetAxisRaw("Vertical") < 0) {
-            _player.AddForce(ForceDirection.Down);
+            _player.AddRelativeForce(ForceDirection.Down);
         }
         if (Input.GetAxisRaw("Horizontal") < 0) {
-            _player.AddTorque(RotationDirection.Left);
+            _player.AddRotation(RotationDirection.Left);
         }
     }
 }

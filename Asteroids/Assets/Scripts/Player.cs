@@ -9,12 +9,12 @@ public class Player : MonoBehaviour
         _playerRigidbody2D = GetComponent<Rigidbody2D>();
     }
 
-    public void AddForce(ForceDirection forceDirection)
+    public void AddRelativeForce(ForceDirection forceDirection)
     {
         _playerRigidbody2D.AddRelativeForce(forceDirection.GetForce());
     }
 
-    public void AddTorque(RotationDirection torqueDirection)
+    public void AddRotation(RotationDirection torqueDirection)
     {
         _playerRigidbody2D.rotation += torqueDirection.GetTorque();
     }
