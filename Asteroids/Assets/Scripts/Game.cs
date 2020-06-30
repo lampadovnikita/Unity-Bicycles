@@ -7,16 +7,16 @@ public class Game : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (Input.GetKey(KeyCode.W)) {
+        if (Input.GetAxisRaw("Vertical") > 0) {
             _player.AddForce(ForceDirection.Up);
         }
-        if (Input.GetKey(KeyCode.D)) {
+        if (Input.GetAxisRaw("Horizontal") > 0) {
             _player.AddTorque(TorqueDirection.Right);
         }
-        if (Input.GetKey(KeyCode.S)) {
+        if (Input.GetAxisRaw("Vertical") < 0) {
             _player.AddForce(ForceDirection.Down);
         }
-        if (Input.GetKey(KeyCode.A)) {
+        if (Input.GetAxisRaw("Horizontal") < 0) {
             _player.AddTorque(TorqueDirection.Left);
         }
     }
