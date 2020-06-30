@@ -3,7 +3,7 @@
 public class Game : MonoBehaviour
 {
     [SerializeField]
-    private Player _player;
+    private Player _player = default;
 
     private void Update()
     {

@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
 
     public void AddForce(ForceDirection forceDirection)
     {
-        _rigidbody2D.AddForce(forceDirection.GetForce());
+        _rigidbody2D.AddRelativeForce(forceDirection.GetForce());
     }
 
     public void AddTorque(TorqueDirection torqueDirection)

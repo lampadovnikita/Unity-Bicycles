@@ -11,8 +11,8 @@ public enum ForceDirection
 public static class ForceDirectionExtensions
 {
     private static Vector3[] _forceVectors = {
-        new Vector3(0f, 20f, 0f),
-        new Vector3(0f, -20f, 0f),
+        new Vector3(0f, 10f, 0f),
+        new Vector3(0f, -10f, 0f),
     };
 
     public static Vector3 GetForce(this ForceDirection forceDirection)
