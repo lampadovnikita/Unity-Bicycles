@@ -2,20 +2,20 @@
 
 public class Player : MonoBehaviour
 {
-    private Rigidbody2D _rigidbody2D;
+    private Rigidbody2D _playerRigidbody2D;
 
     private void Awake()
     {
-        _rigidbody2D = GetComponent<Rigidbody2D>();
+        _playerRigidbody2D = GetComponent<Rigidbody2D>();
     }
 
     public void AddForce(ForceDirection forceDirection)
     {
-        _rigidbody2D.AddRelativeForce(forceDirection.GetForce());
+        _playerRigidbody2D.AddRelativeForce(forceDirection.GetForce());
     }
 
     public void AddTorque(RotationDirection torqueDirection)
     {
-        _rigidbody2D.rotation += torqueDirection.GetTorque();
+        _playerRigidbody2D.rotation += torqueDirection.GetTorque();
     }
 }
