@@ -11,8 +11,8 @@ public enum RotationDirection
 public static class RotationDirectionExtensions
 {
     private static float[] _rotationValues = {
-        -5f,
-        5f
+        -3f,
+        3f
     };
 
     public static float GetTorque(this RotationDirection torqueDirection) {
