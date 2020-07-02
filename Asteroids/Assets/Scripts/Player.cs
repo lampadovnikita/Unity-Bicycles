@@ -19,8 +19,8 @@ public class Player : MonoBehaviour
         _playerRigidbody2D.AddRelativeForce(30f * forceDirection.GetForce());
     }
 
-    public void AddRotation(RotationDirection torqueDirection)
+    public void AddRotation(RotationDirection rotationDirection)
     {
-        _playerRigidbody2D.rotation += 3f * torqueDirection.GetTorque();
+        _playerRigidbody2D.rotation += 3f * rotationDirection.GetTorque();
     }
 }
