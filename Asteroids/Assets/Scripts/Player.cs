@@ -2,9 +2,6 @@
 
 public class Player : MonoBehaviour
 {
-    private static int halfHeight = Screen.height / 2;
-    private static int halfWidth = Screen.width / 2;
-
     private Rigidbody2D _playerRigidbody2D;
 
     private void Awake()

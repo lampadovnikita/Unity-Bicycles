@@ -2,8 +2,6 @@
 
 public class ScreenWrapped : MonoBehaviour
 {
-    private Vector2 _screenBounds;
-
     private Vector3 _topRight;
     private Vector3 _bottomLeft;
 
