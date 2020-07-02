@@ -24,10 +24,10 @@ public class ScreenWrapped : MonoBehaviour
         Vector3 position = transform.position;
 
         if (Mathf.Abs(position.x) > _topRight.x + _spriteWidth) {
-            transform.position = new Vector2(-position.x, position.y);
+            transform.position = new Vector2(-1 * position.x, position.y);
         }
         else if (Mathf.Abs(position.y) > _topRight.y + _spriteHeight) {
-            transform.position = new Vector2(-position.x, -position.y);
+            transform.position = new Vector2(position.x, -1 * position.y);
         }
     }
 }
