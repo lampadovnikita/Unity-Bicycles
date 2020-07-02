@@ -5,7 +5,7 @@ public class Game : MonoBehaviour
     [SerializeField]
     private Player _player = default;
 
-    private void FixedUpdate()
+    private void Update()
     {
         if (Input.GetAxisRaw("Vertical") > 0) {
             _player.AddRelativeForce(ForceDirection.Up);
