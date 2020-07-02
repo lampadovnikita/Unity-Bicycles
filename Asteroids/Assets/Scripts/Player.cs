@@ -16,11 +16,11 @@ public class Player : MonoBehaviour
 
     public void AddRelativeForce(ForceDirection forceDirection)
     {
-        _playerRigidbody2D.AddRelativeForce(forceDirection.GetForce());
+        _playerRigidbody2D.AddRelativeForce(30f * forceDirection.GetForce());
     }
 
     public void AddRotation(RotationDirection torqueDirection)
     {
-        _playerRigidbody2D.rotation += torqueDirection.GetTorque();
+        _playerRigidbody2D.rotation += 3f * torqueDirection.GetTorque();
     }
 }

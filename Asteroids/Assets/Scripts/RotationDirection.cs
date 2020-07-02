@@ -7,8 +7,8 @@
 public static class RotationDirectionExtensions
 {
     private static float[] _rotationValues = {
-        -3f,
-        3f
+        -1f,
+        1f
     };
 
     public static float GetTorque(this RotationDirection torqueDirection) {
