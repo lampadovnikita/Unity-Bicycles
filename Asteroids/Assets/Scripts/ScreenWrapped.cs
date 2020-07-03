@@ -27,17 +27,25 @@ public class ScreenWrapped : MonoBehaviour
     {
         Vector3 position = transform.position;
 
-        float padding = 0.1f;
+        float rightBound = _topRight.x + _spriteWidth;
+        float leftBound = _bottomLeft.x - _spriteWidth;
 
-        if (position.x > (_topRight.x + _spriteWidth + padding) ||
-            position.x < (_bottomLeft.x - _spriteWidth - padding)) {
+        float upperBound = _topRight.y + _spriteHeight;
+        float bottomBound = _bottomLeft.y - _spriteHeight;
 
-            _rigidbody2D.position = new Vector2(-1 * position.x, position.y);
+        // Position should be swapped to a bound coordinate instead of inverted position of an object
+        // because that approach prevent bug with endless position inversion of an object that out of the screen area
+        if (position.x > rightBound) {
+            _rigidbody2D.position = new Vector2(leftBound, position.y);
         }
-        else if (position.y > (_topRight.y + _spriteHeight + padding) ||
-                 position.y < (_bottomLeft.y - _spriteHeight - padding)) {
-
-            _rigidbody2D.position = new Vector2(position.x, -1 * position.y);
+        else if (position.x < leftBound) {
+            _rigidbody2D.position = new Vector2(rightBound, position.y);
+        }
+        else if (position.y > upperBound) {
+            _rigidbody2D.position = new Vector2(position.x, bottomBound);
+        }
+        else if (position.y < bottomBound) {
+            _rigidbody2D.position = new Vector2(position.x, upperBound);
         }
     }
 }
