@@ -22,6 +22,6 @@ public class Player : MonoBehaviour
 
     public void AddRotation(RotationDirection rotationDirection)
     {
-        _playerRigidbody2D.rotation += rotationForce * Time.deltaTime * rotationDirection.GetTorque();
+        _playerRigidbody2D.rotation += rotationForce * Time.deltaTime * rotationDirection.GetRoataion();
     }
 }

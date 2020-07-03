@@ -11,7 +11,7 @@ public static class RotationDirectionExtensions
         1f
     };
 
-    public static float GetTorque(this RotationDirection torqueDirection) {
-        return _rotationValues[(int)torqueDirection];
+    public static float GetRoataion(this RotationDirection rotationDirection) {
+        return _rotationValues[(int)rotationDirection];
     }
 }
