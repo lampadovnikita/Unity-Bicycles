@@ -344,8 +344,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1a8f3c2cc4114a44b943d5e6ba776c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainForce: 500
-  rotationForce: 200
+  mainForce: 1000
+  rotationForce: 300
 --- !u!50 &1794581330
 Rigidbody2D:
   serializedVersion: 4
