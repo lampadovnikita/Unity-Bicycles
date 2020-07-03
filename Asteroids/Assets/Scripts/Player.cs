@@ -7,10 +7,10 @@ public class Player : MonoBehaviour
     private float maxAxisVelocity = 42f;
     
     [SerializeField]
-    private float mainForce = 200f;
+    private float mainForce = 1000f;
 
     [SerializeField]
-    private float rotationForce = 100f;
+    private float rotationForce = 300f;
 
     private void Awake()
     {
