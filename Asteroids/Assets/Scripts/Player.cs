@@ -4,6 +4,10 @@ public class Player : MonoBehaviour
 {
     private Rigidbody2D _playerRigidbody2D;
 
+    private float maxAxisVelocity = 42f;
+
+    private float maxRotationVelocity = 30f;
+    
     [SerializeField]
     private float mainForce = 200f;
 
@@ -18,10 +22,25 @@ public class Player : MonoBehaviour
     public void AddRelativeForce(ForceDirection forceDirection)
     {
         _playerRigidbody2D.AddRelativeForce(mainForce * Time.deltaTime * forceDirection.GetForce());
+        
+        if (Mathf.Abs(_playerRigidbody2D.velocity.x) > maxAxisVelocity) {
+            float newVelocity = (_playerRigidbody2D.velocity.x > 0) ? maxAxisVelocity : -1 * maxAxisVelocity;
+            _playerRigidbody2D.velocity = new Vector2(newVelocity, _playerRigidbody2D.velocity.y);
+        }
+
+        if (_playerRigidbody2D.velocity.y > maxAxisVelocity) {
+            float newVelocity = (_playerRigidbody2D.velocity.y > 0) ? maxAxisVelocity : -1 * maxAxisVelocity;
+            _playerRigidbody2D.velocity = new Vector2(_playerRigidbody2D.velocity.x, newVelocity);
+        }        
     }
 
     public void AddRotation(RotationDirection rotationDirection)
     {
         _playerRigidbody2D.rotation += rotationForce * Time.deltaTime * rotationDirection.GetRoataion();
+
+        if (Mathf.Abs(_playerRigidbody2D.rotation) > maxRotationVelocity) {
+            float newRotaionVelocity = (_playerRigidbody2D.rotation > 0) ? maxRotationVelocity : -1 * maxRotationVelocity;
+            _playerRigidbody2D.rotation = newRotaionVelocity;
+        }
     }
 }
