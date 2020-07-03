@@ -15,9 +15,9 @@ public class ScreenWrapped : MonoBehaviour
         _rigidbody2D = transform.GetComponent<Rigidbody2D>();
 
         float zDistance = transform.position.z - Camera.main.transform.position.z;
-        _topRight = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, zDistance));
 
-        _bottomLeft = new Vector3(-1 * (_topRight.x / 2), -1 * (_topRight.y / 2), _topRight.z);
+        _bottomLeft = Camera.main.ViewportToWorldPoint(new Vector3(0f, 0f, zDistance));
+        _topRight = Camera.main.ViewportToWorldPoint(new Vector3(1f, 1f, zDistance));
 
         _spriteWidth = transform.GetComponent<SpriteRenderer>().bounds.size.x * 0.5f;
         _spriteHeight = transform.GetComponent<SpriteRenderer>().bounds.size.y * 0.5f;
