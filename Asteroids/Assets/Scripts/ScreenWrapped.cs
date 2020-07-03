@@ -29,17 +29,15 @@ public class ScreenWrapped : MonoBehaviour
 
         float padding = 0.1f;
 
-        if (Mathf.Abs(position.x) > _topRight.x + _spriteWidth + padding) {
-            float newX = -1 * position.x;
-            newX += (position.x >= _topRight.x) ? padding : -padding;
-            
-            _rigidbody2D.position = new Vector2(newX, position.y);
-        }
-        else if (Mathf.Abs(position.y) > _topRight.y + _spriteHeight + padding) {
-            float newY = -1 * position.y;
-            newY += (position.y > _topRight.y) ? padding : -padding;
+        if (position.x > (_topRight.x + _spriteWidth + padding) ||
+            position.x < (_bottomLeft.x - _spriteWidth - padding)) {
 
-            _rigidbody2D.position = new Vector2(position.x, newY);
+            _rigidbody2D.position = new Vector2(-1 * position.x, position.y);
+        }
+        else if (position.y > (_topRight.y + _spriteHeight + padding) ||
+                 position.y < (_bottomLeft.y - _spriteHeight - padding)) {
+
+            _rigidbody2D.position = new Vector2(position.x, -1 * position.y);
         }
     }
 }
