@@ -26,7 +26,7 @@ public class Player : MonoBehaviour
             _playerRigidbody2D.velocity = new Vector2(newVelocity, _playerRigidbody2D.velocity.y);
         }
 
-        if (_playerRigidbody2D.velocity.y > maxAxisVelocity) {
+        if (Mathf.Abs(_playerRigidbody2D.velocity.y) > maxAxisVelocity) {
             float newVelocity = (_playerRigidbody2D.velocity.y > 0) ? maxAxisVelocity : -1 * maxAxisVelocity;
             _playerRigidbody2D.velocity = new Vector2(_playerRigidbody2D.velocity.x, newVelocity);
         }        
