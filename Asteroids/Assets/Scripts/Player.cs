@@ -5,8 +5,6 @@ public class Player : MonoBehaviour
     private Rigidbody2D _playerRigidbody2D;
 
     private float maxAxisVelocity = 42f;
-
-    private float maxRotationVelocity = 30f;
     
     [SerializeField]
     private float mainForce = 200f;
@@ -37,10 +35,5 @@ public class Player : MonoBehaviour
     public void AddRotation(RotationDirection rotationDirection)
     {
         _playerRigidbody2D.rotation += rotationForce * Time.deltaTime * rotationDirection.GetRoataion();
-
-        if (Mathf.Abs(_playerRigidbody2D.rotation) > maxRotationVelocity) {
-            float newRotaionVelocity = (_playerRigidbody2D.rotation > 0) ? maxRotationVelocity : -1 * maxRotationVelocity;
-            _playerRigidbody2D.rotation = newRotaionVelocity;
-        }
     }
 }
