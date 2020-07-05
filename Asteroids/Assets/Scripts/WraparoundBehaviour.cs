@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class WraparoundBehavior : MonoBehaviour
+public class WraparoundBehaviour : MonoBehaviour
 {
     private Vector3 _topRight;
     private Vector3 _bottomLeft;

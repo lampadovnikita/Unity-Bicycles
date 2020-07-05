@@ -19,5 +19,8 @@ public class Game : MonoBehaviour
         if (Input.GetAxisRaw("Horizontal") < 0) {
             _player.AddRotation(RotationDirection.Left);
         }
+        if (Input.GetButtonDown("Fire1")) {
+            _player.GetComponent<ShootBehavior>().Shoot();
+        }
     }
 }
