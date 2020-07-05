@@ -10,6 +10,9 @@ public class WraparoundBehaviour : MonoBehaviour
 
     private Rigidbody2D _rigidbody2D;
 
+    [SerializeField]
+    private SpriteRenderer spriteRenderer = default;
+
     private void Start()
     {
         _rigidbody2D = transform.GetComponent<Rigidbody2D>();
@@ -19,8 +22,8 @@ public class WraparoundBehaviour : MonoBehaviour
         _bottomLeft = Camera.main.ViewportToWorldPoint(new Vector3(0f, 0f, zDistance));
         _topRight = Camera.main.ViewportToWorldPoint(new Vector3(1f, 1f, zDistance));
 
-        _spriteWidth = transform.GetComponent<SpriteRenderer>().bounds.size.x * 0.5f;
-        _spriteHeight = transform.GetComponent<SpriteRenderer>().bounds.size.y * 0.5f;
+        _spriteWidth = spriteRenderer.bounds.size.x * 0.5f;
+        _spriteHeight = spriteRenderer.bounds.size.y * 0.5f;
     }
 
     private void LateUpdate()

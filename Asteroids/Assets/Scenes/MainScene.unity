@@ -380,6 +380,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 282d531126200e740b3ca4a0d63bf575, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 1794581327}
 --- !u!114 &1794581332
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -392,5 +393,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 868616e90ceec9f4a8301e5491bdf922, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 4279422646701838342, guid: a396b5911eba40c4ca9180537a8cd025,
+  bulletPrefab: {fileID: 3377676361346697515, guid: a396b5911eba40c4ca9180537a8cd025,
     type: 3}
