@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class ScreenWrapped : MonoBehaviour
+public class WraparoundBehavior : MonoBehaviour
 {
     private Vector3 _topRight;
     private Vector3 _bottomLeft;
