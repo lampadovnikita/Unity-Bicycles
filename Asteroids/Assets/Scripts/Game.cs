@@ -3,24 +3,24 @@
 public class Game : MonoBehaviour
 {
     [SerializeField]
-    private Player _player = default;
+    private Player player = default;
 
     private void Update()
     {
         if (Input.GetAxisRaw("Vertical") > 0) {
-            _player.AddRelativeForce(ForceDirection.Up);
+            player.AddRelativeForce(ForceDirection.Up);
         }
         if (Input.GetAxisRaw("Horizontal") > 0) {
-            _player.AddRotation(RotationDirection.Right);
+            player.AddRotation(RotationDirection.Right);
         }
         if (Input.GetAxisRaw("Vertical") < 0) {
-            _player.AddRelativeForce(ForceDirection.Down);
+            player.AddRelativeForce(ForceDirection.Down);
         }
         if (Input.GetAxisRaw("Horizontal") < 0) {
-            _player.AddRotation(RotationDirection.Left);
+            player.AddRotation(RotationDirection.Left);
         }
         if (Input.GetButtonDown("Fire1")) {
-            _player.GetComponent<ShootBehavior>().Shoot();
+            player.GetComponent<ShootBehavior>().Shoot();
         }
     }
 }
