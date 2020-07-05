@@ -4,7 +4,7 @@ public class BulletBehavior : MonoBehaviour
 {
     private Rigidbody2D _bulletRigidBody2D = default;
 
-    private float lifeTimeStorage = 0f;
+    private float _lifeTimeStorage = 0f;
 
     [SerializeField]
     private float force = 1500f;
@@ -22,9 +22,9 @@ public class BulletBehavior : MonoBehaviour
 
     private void Update()
     {
-        lifeTimeStorage += Time.deltaTime;
+        _lifeTimeStorage += Time.deltaTime;
 
-        if (lifeTimeStorage > MaxLifeTime) {
+        if (_lifeTimeStorage > MaxLifeTime) {
             Destroy(gameObject);
         }
     }
