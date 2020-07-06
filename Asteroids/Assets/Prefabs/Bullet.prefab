@@ -92,6 +92,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5684405755638500562}
   - component: {fileID: 4430338614922274978}
+  - component: {fileID: 5330624114504820323}
   - component: {fileID: 3377676361346697515}
   - component: {fileID: 7729523432767167735}
   m_Layer: 0
@@ -137,6 +138,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!58 &5330624114504820323
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5684405755638501167}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.24332345}
+  serializedVersion: 2
+  m_Radius: 0.5836426
 --- !u!114 &3377676361346697515
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -150,7 +167,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   force: 1500
-  MaxLifeTime: 2
+  maxLifeTime: 2
 --- !u!114 &7729523432767167735
 MonoBehaviour:
   m_ObjectHideFlags: 0
