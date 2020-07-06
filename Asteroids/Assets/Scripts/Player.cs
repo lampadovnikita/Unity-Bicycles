@@ -17,6 +17,11 @@ public class Player : MonoBehaviour
         _playerRigidbody2D = GetComponent<Rigidbody2D>();
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Destroy(gameObject);
+    }
+
     public void AddRelativeForce(ForceDirection forceDirection)
     {
         _playerRigidbody2D.AddRelativeForce(mainForce * Time.deltaTime * forceDirection.GetForce());

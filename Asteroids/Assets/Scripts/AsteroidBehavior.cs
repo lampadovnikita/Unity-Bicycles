@@ -12,4 +12,10 @@ public class AsteroidBehavior : MonoBehaviour
 
         _rigidbody2D.AddRelativeForce(100f * Vector3.up);
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Destroy(gameObject);
+    }
+
 }
