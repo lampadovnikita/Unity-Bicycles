@@ -332,7 +332,7 @@ GameObject:
   - component: {fileID: 1794581331}
   - component: {fileID: 1794581332}
   m_Layer: 0
-  m_Name: Spaceship
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -415,7 +415,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainForce: 1000
-  rotationForce: 200
+  rotationForce: 275
 --- !u!50 &1794581330
 Rigidbody2D:
   serializedVersion: 4
