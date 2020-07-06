@@ -10,7 +10,7 @@ public class BulletBehavior : MonoBehaviour
     private float force = 1500f;
 
     [SerializeField]
-    private float MaxLifeTime = 2f;
+    private float maxLifeTime = 2f;
 
     private void Start()
     {
@@ -24,7 +24,7 @@ public class BulletBehavior : MonoBehaviour
     {
         _lifeTimeStorage += Time.deltaTime;
 
-        if (_lifeTimeStorage > MaxLifeTime) {
+        if (_lifeTimeStorage > maxLifeTime) {
             Destroy(gameObject);
         }
     }
