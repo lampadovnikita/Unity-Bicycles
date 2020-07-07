@@ -2,15 +2,15 @@
 
 public class WraparoundBehaviour : MonoBehaviour
 {
+    [SerializeField]
+    private SpriteRenderer spriteRenderer = default;
+
     private float _upperBound;
     private float _rightBound;
     private float _bottomBound;
     private float _leftBound;
 
     private Rigidbody2D _rigidbody2D;
-
-    [SerializeField]
-    private SpriteRenderer spriteRenderer = default;
 
     private void Start()
     {
