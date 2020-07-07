@@ -309,6 +309,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1118855824}
+  asteroidsLimit: 10
+  asteroidPrefab: {fileID: -1039346301948365101, guid: 2d920430658ad8341bbfd3f5d5680b6c,
+    type: 3}
 --- !u!4 &811578332
 Transform:
   m_ObjectHideFlags: 0
