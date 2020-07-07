@@ -19,7 +19,7 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 
     public void AddRelativeForce(ForceDirection forceDirection)
