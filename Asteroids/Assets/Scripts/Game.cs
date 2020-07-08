@@ -47,19 +47,19 @@ public class Game : MonoBehaviour
 		{
 			if (Input.GetAxisRaw("Vertical") > 0)
 			{
-				player.AddRelativeForce(ForceDirection.Up);
+				player.AddRelativeForce(Player.ForceDirection.Up);
 			}
 			if (Input.GetAxisRaw("Horizontal") > 0)
 			{
-				player.AddRotation(RotationDirection.Right);
+				player.AddRotation(Player.RotationDirection.Right);
 			}
 			if (Input.GetAxisRaw("Vertical") < 0)
 			{
-				player.AddRelativeForce(ForceDirection.Down);
+				player.AddRelativeForce(Player.ForceDirection.Down);
 			}
 			if (Input.GetAxisRaw("Horizontal") < 0)
 			{
-				player.AddRotation(RotationDirection.Left);
+				player.AddRotation(Player.RotationDirection.Left);
 			}
 			if (Input.GetButtonDown("Fire1"))
 			{

@@ -17,7 +17,7 @@ public class BulletBehavior : MonoBehaviour
 	{
 		_bulletRigidBody2D = GetComponent<Rigidbody2D>();
 
-		_bulletRigidBody2D.AddRelativeForce(force * ForceDirectionExtensions.GetForce(ForceDirection.Up));
+		_bulletRigidBody2D.AddRelativeForce(force * Vector2.up);
 
 	}
 

@@ -3,6 +3,18 @@
 [RequireComponent(typeof(Rigidbody2D))]
 public class Player : MonoBehaviour
 {
+	public enum ForceDirection
+	{
+		Up,
+		Down
+	}
+
+	public enum RotationDirection
+	{
+		Right,
+		Left
+	}
+
 	private Rigidbody2D _playerRigidbody2D;
 
 	private float _maxAxisVelocity = 42f;
@@ -25,7 +37,21 @@ public class Player : MonoBehaviour
 
 	public void AddRelativeForce(ForceDirection forceDirection)
 	{
-		_playerRigidbody2D.AddRelativeForce(mainForce * Time.deltaTime * forceDirection.GetForce());
+		Vector2 forceDirectionVector = Vector2.zero;
+		switch (forceDirection)
+		{
+			case ForceDirection.Up:
+				forceDirectionVector = Vector2.up;
+				break;
+			case ForceDirection.Down:
+				forceDirectionVector = Vector2.down;
+				break;
+			default:
+				Debug.Assert(false, "Unprocessed force direction case!");
+				break;
+		}
+
+		_playerRigidbody2D.AddRelativeForce(mainForce * Time.deltaTime * forceDirectionVector);
 
 		if (Mathf.Abs(_playerRigidbody2D.velocity.x) > _maxAxisVelocity)
 		{
@@ -42,6 +68,20 @@ public class Player : MonoBehaviour
 
 	public void AddRotation(RotationDirection rotationDirection)
 	{
-		_playerRigidbody2D.rotation += rotationForce * Time.deltaTime * rotationDirection.GetRoataion();
+		float rotationDirectionValue = 0f;
+		switch (rotationDirection)
+		{
+			case RotationDirection.Right:
+				rotationDirectionValue = -1f;
+				break;
+			case RotationDirection.Left:
+				rotationDirectionValue = 1f;
+				break;
+			default:
+				Debug.Assert(false, "Unprocessed rotation direction case!");
+				break;
+		}
+
+		_playerRigidbody2D.rotation += rotationForce * Time.deltaTime * rotationDirectionValue;
 	}
 }
