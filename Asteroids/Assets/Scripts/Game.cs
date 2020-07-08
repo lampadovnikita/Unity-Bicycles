@@ -18,6 +18,8 @@ public class Game : MonoBehaviour
 	[SerializeField, Range(0.0001f, 0.5f)]
 	private float ySpawnPaddingFactor = 0.1f;
 
+	private int _activeAsteroidsCount = 0;
+
 	private float _xSpawnPadding = default;
 	private float _ySpawnPadding = default;
 
@@ -73,8 +75,11 @@ public class Game : MonoBehaviour
 		Vector3 spawnPosition = new Vector3();
 		spawnPosition.z = transform.position.z;
 
+		AsteroidBehavior asteroid;
+
 		float xIndent;
 		float yIndent;
+
 		for (int i = 0; i < asteroidsSpawnLimit; i++)
 		{
 			// Choose the side along to which we wil generate a position.
@@ -115,7 +120,20 @@ public class Game : MonoBehaviour
 				spawnPosition.x = Random.Range(_bottomLeftBound.x, _topRightBound.x);
 			}
 
-			Instantiate(asteroidPrefab, spawnPosition, Quaternion.identity);
+			asteroid =  Instantiate(asteroidPrefab, spawnPosition, Quaternion.identity);
+			asteroid.onAsteroidDestroyCallback = OnAsteroidDestroy;
+
+			_activeAsteroidsCount++;
+		}
+	}
+
+	private void OnAsteroidDestroy()
+	{
+		_activeAsteroidsCount--;
+
+		if (_activeAsteroidsCount == 0)
+		{
+			SpawnAsteroids();
 		}
 	}
 }

@@ -5,6 +5,9 @@ public class AsteroidBehavior : MonoBehaviour
 {
 	private Rigidbody2D _rigidbody2D = default;
 
+	public delegate void OnAsteroidDestroy();
+	public OnAsteroidDestroy onAsteroidDestroyCallback;
+
 	private void Start()
 	{
 		_rigidbody2D = GetComponent<Rigidbody2D>();
@@ -16,6 +19,11 @@ public class AsteroidBehavior : MonoBehaviour
 
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
+		if (onAsteroidDestroyCallback != null)
+		{
+			onAsteroidDestroyCallback();		
+		}
+
 		Destroy(gameObject);
 	}
 
