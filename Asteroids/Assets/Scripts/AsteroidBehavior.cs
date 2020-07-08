@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class AsteroidBehavior : MonoBehaviour
 {
 	private Rigidbody2D _rigidbody2D = default;
