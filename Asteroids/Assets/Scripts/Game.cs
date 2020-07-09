@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Game : MonoBehaviour
 {
@@ -25,6 +27,11 @@ public class Game : MonoBehaviour
 	[SerializeField]
 	private GameObject gameOverUI = default;
 
+	[SerializeField]
+	private TextMeshProUGUI scoreTextMeshPro = default;
+
+	private int score = 0;
+
 	private int playerLifes = default;
 
 	private int activeAsteroidsCount = 0;
@@ -48,6 +55,8 @@ public class Game : MonoBehaviour
 		player.onPlayerDestroyCallback += OnPlayerDestroy;
 
 		playerLifes = playerOriginLifes;
+
+		scoreTextMeshPro.text = score.ToString();
 
 		SpawnAsteroids();
 	}
@@ -149,6 +158,9 @@ public class Game : MonoBehaviour
 	private void OnAsteroidDestroy()
 	{
 		activeAsteroidsCount--;
+		
+		score += 50;
+		scoreTextMeshPro.text = score.ToString();
 
 		if (activeAsteroidsCount == 0)
 		{
