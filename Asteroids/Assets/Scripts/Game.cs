@@ -18,27 +18,23 @@ public class Game : MonoBehaviour
 	[SerializeField, Range(0.0001f, 0.5f)]
 	private float ySpawnPaddingFactor = 0.1f;
 
-	private int _activeAsteroidsCount = 0;
+	private int activeAsteroidsCount = 0;
 
-	private float _xSpawnPadding = default;
-	private float _ySpawnPadding = default;
+	private float xSpawnPadding = default;
+	private float ySpawnPadding = default;
 
-	private List<AsteroidBehavior> _asteroidsContainer = default;
-
-	private Vector3 _topRightBound = default;
-	private Vector3 _bottomLeftBound = default;
+	private Vector3 topRightBound = default;
+	private Vector3 bottomLeftBound = default;
 
 	private void Start()
 	{
-		_asteroidsContainer = new List<AsteroidBehavior>();
-
 		float zDistance = transform.position.z - Camera.main.transform.position.z;
 
-		_bottomLeftBound = Camera.main.ViewportToWorldPoint(new Vector3(0f, 0f, zDistance));
-		_topRightBound = Camera.main.ViewportToWorldPoint(new Vector3(1f, 1f, zDistance));
+		bottomLeftBound = Camera.main.ViewportToWorldPoint(new Vector3(0f, 0f, zDistance));
+		topRightBound = Camera.main.ViewportToWorldPoint(new Vector3(1f, 1f, zDistance));
 
-		_xSpawnPadding = xSpawnPaddingFactor * Mathf.Abs(_topRightBound.x - _bottomLeftBound.x);
-		_ySpawnPadding = ySpawnPaddingFactor * Mathf.Abs(_topRightBound.y - _bottomLeftBound.y);
+		xSpawnPadding = xSpawnPaddingFactor * Mathf.Abs(topRightBound.x - bottomLeftBound.x);
+		ySpawnPadding = ySpawnPaddingFactor * Mathf.Abs(topRightBound.y - bottomLeftBound.y);
 
 		SpawnAsteroids();
 	}
@@ -89,49 +85,49 @@ public class Game : MonoBehaviour
 			// else (if the RNG produce 1), generate the position along the x axis.
 			if (Random.Range(0, 2) == 0)
 			{
-				xIndent = Random.Range(-1 * _xSpawnPadding, _xSpawnPadding);
+				xIndent = Random.Range(-1 * xSpawnPadding, xSpawnPadding);
 				if (xIndent > 0)
 				{
-					spawnPosition.x = _bottomLeftBound.x + xIndent;
+					spawnPosition.x = bottomLeftBound.x + xIndent;
 				}
 				else
 				{
 					// The indent is negative, so the addition move the objects position to the left
 					// of the screen.
-					spawnPosition.x = _topRightBound.x + xIndent;
+					spawnPosition.x = topRightBound.x + xIndent;
 				}
 
-				spawnPosition.y = Random.Range(_bottomLeftBound.y, _topRightBound.y);
+				spawnPosition.y = Random.Range(bottomLeftBound.y, topRightBound.y);
 			}
 			else
 			{
-				yIndent = Random.Range(-1 * _ySpawnPadding, _ySpawnPadding);
+				yIndent = Random.Range(-1 * ySpawnPadding, ySpawnPadding);
 				if (yIndent > 0)
 				{
-					spawnPosition.y = _bottomLeftBound.y + yIndent;
+					spawnPosition.y = bottomLeftBound.y + yIndent;
 				}
 				else
 				{
 					// The indent is negative, so the addition move the objects position to the bottom
 					// of the screen.
-					spawnPosition.y = _topRightBound.y + yIndent;
+					spawnPosition.y = topRightBound.y + yIndent;
 				}
 
-				spawnPosition.x = Random.Range(_bottomLeftBound.x, _topRightBound.x);
+				spawnPosition.x = Random.Range(bottomLeftBound.x, topRightBound.x);
 			}
 
-			asteroid =  Instantiate(asteroidPrefab, spawnPosition, Quaternion.identity);
+			asteroid = Instantiate(asteroidPrefab, spawnPosition, Quaternion.identity);
 			asteroid.onAsteroidDestroyCallback = OnAsteroidDestroy;
 
-			_activeAsteroidsCount++;
+			activeAsteroidsCount++;
 		}
 	}
 
 	private void OnAsteroidDestroy()
 	{
-		_activeAsteroidsCount--;
+		activeAsteroidsCount--;
 
-		if (_activeAsteroidsCount == 0)
+		if (activeAsteroidsCount == 0)
 		{
 			SpawnAsteroids();
 		}

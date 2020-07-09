@@ -3,9 +3,9 @@
 [RequireComponent(typeof(Rigidbody2D))]
 public class BulletBehavior : MonoBehaviour
 {
-	private Rigidbody2D _bulletRigidBody2D = default;
+	private Rigidbody2D bulletRigidBody2D = default;
 
-	private float _lifeTimeStorage = 0f;
+	private float lifeTimeStorage = 0f;
 
 	[SerializeField]
 	private float force = 1500f;
@@ -15,17 +15,17 @@ public class BulletBehavior : MonoBehaviour
 
 	private void Start()
 	{
-		_bulletRigidBody2D = GetComponent<Rigidbody2D>();
+		bulletRigidBody2D = GetComponent<Rigidbody2D>();
 
-		_bulletRigidBody2D.AddRelativeForce(force * Vector2.up);
+		bulletRigidBody2D.AddRelativeForce(force * Vector2.up);
 
 	}
 
 	private void Update()
 	{
-		_lifeTimeStorage += Time.deltaTime;
+		lifeTimeStorage += Time.deltaTime;
 
-		if (_lifeTimeStorage > maxLifeTime)
+		if (lifeTimeStorage > maxLifeTime)
 		{
 			Destroy(gameObject);
 		}

@@ -6,10 +6,10 @@ public class WraparoundBehaviour : MonoBehaviour
 	[SerializeField]
 	private SpriteRenderer spriteRenderer = default;
 
-	private float _upperBound;
-	private float _rightBound;
-	private float _bottomBound;
-	private float _leftBound;
+	private float upperBound;
+	private float rightBound;
+	private float bottomBound;
+	private float leftBound;
 
 	private Rigidbody2D _rigidbody2D;
 
@@ -25,11 +25,11 @@ public class WraparoundBehaviour : MonoBehaviour
 		float _spriteWidth = spriteRenderer.bounds.size.x * 0.5f;
 		float _spriteHeight = spriteRenderer.bounds.size.y * 0.5f;
 
-		_rightBound = _topRight.x + _spriteWidth;
-		_leftBound = _bottomLeft.x - _spriteWidth;
+		rightBound = _topRight.x + _spriteWidth;
+		leftBound = _bottomLeft.x - _spriteWidth;
 
-		_upperBound = _topRight.y + _spriteHeight;
-		_bottomBound = _bottomLeft.y - _spriteHeight;
+		upperBound = _topRight.y + _spriteHeight;
+		bottomBound = _bottomLeft.y - _spriteHeight;
 	}
 
 	private void LateUpdate()
@@ -38,21 +38,21 @@ public class WraparoundBehaviour : MonoBehaviour
 
 		// Position should be swapped to a bound coordinate instead of inverted position of an object
 		// because that approach prevent bug with endless position inversion of an object that out of the screen area
-		if (position.x > _rightBound)
+		if (position.x > rightBound)
 		{
-			_rigidbody2D.position = new Vector2(_leftBound, position.y);
+			_rigidbody2D.position = new Vector2(leftBound, position.y);
 		}
-		else if (position.x < _leftBound)
+		else if (position.x < leftBound)
 		{
-			_rigidbody2D.position = new Vector2(_rightBound, position.y);
+			_rigidbody2D.position = new Vector2(rightBound, position.y);
 		}
-		else if (position.y > _upperBound)
+		else if (position.y > upperBound)
 		{
-			_rigidbody2D.position = new Vector2(position.x, _bottomBound);
+			_rigidbody2D.position = new Vector2(position.x, bottomBound);
 		}
-		else if (position.y < _bottomBound)
+		else if (position.y < bottomBound)
 		{
-			_rigidbody2D.position = new Vector2(position.x, _upperBound);
+			_rigidbody2D.position = new Vector2(position.x, upperBound);
 		}
 	}
 }

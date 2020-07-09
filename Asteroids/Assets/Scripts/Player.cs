@@ -15,19 +15,19 @@ public class Player : MonoBehaviour
 		Left
 	}
 
-	private Rigidbody2D _playerRigidbody2D;
-
-	private float _maxAxisVelocity = 42f;
-
 	[SerializeField]
 	private float mainForce = 1000f;
 
 	[SerializeField]
 	private float rotationForce = 200f;
 
+	private Rigidbody2D playerRigidbody2D;
+
+	private float maxAxisVelocity = 42f;
+
 	private void Awake()
 	{
-		_playerRigidbody2D = GetComponent<Rigidbody2D>();
+		playerRigidbody2D = GetComponent<Rigidbody2D>();
 	}
 
 	private void OnTriggerEnter2D(Collider2D collision)
@@ -51,18 +51,18 @@ public class Player : MonoBehaviour
 				break;
 		}
 
-		_playerRigidbody2D.AddRelativeForce(mainForce * Time.deltaTime * forceDirectionVector);
+		playerRigidbody2D.AddRelativeForce(mainForce * Time.deltaTime * forceDirectionVector);
 
-		if (Mathf.Abs(_playerRigidbody2D.velocity.x) > _maxAxisVelocity)
+		if (Mathf.Abs(playerRigidbody2D.velocity.x) > maxAxisVelocity)
 		{
-			float newVelocity = (_playerRigidbody2D.velocity.x > 0) ? _maxAxisVelocity : -1 * _maxAxisVelocity;
-			_playerRigidbody2D.velocity = new Vector2(newVelocity, _playerRigidbody2D.velocity.y);
+			float newVelocity = (playerRigidbody2D.velocity.x > 0) ? maxAxisVelocity : -1 * maxAxisVelocity;
+			playerRigidbody2D.velocity = new Vector2(newVelocity, playerRigidbody2D.velocity.y);
 		}
 
-		if (Mathf.Abs(_playerRigidbody2D.velocity.y) > _maxAxisVelocity)
+		if (Mathf.Abs(playerRigidbody2D.velocity.y) > maxAxisVelocity)
 		{
-			float newVelocity = (_playerRigidbody2D.velocity.y > 0) ? _maxAxisVelocity : -1 * _maxAxisVelocity;
-			_playerRigidbody2D.velocity = new Vector2(_playerRigidbody2D.velocity.x, newVelocity);
+			float newVelocity = (playerRigidbody2D.velocity.y > 0) ? maxAxisVelocity : -1 * maxAxisVelocity;
+			playerRigidbody2D.velocity = new Vector2(playerRigidbody2D.velocity.x, newVelocity);
 		}
 	}
 
@@ -82,6 +82,6 @@ public class Player : MonoBehaviour
 				break;
 		}
 
-		_playerRigidbody2D.rotation += rotationForce * Time.deltaTime * rotationDirectionValue;
+		playerRigidbody2D.rotation += rotationForce * Time.deltaTime * rotationDirectionValue;
 	}
 }
