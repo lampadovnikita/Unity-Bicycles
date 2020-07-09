@@ -1,10 +1,14 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Game : MonoBehaviour
 {
 	[SerializeField]
 	private Player player = default;
+
+	[SerializeField]
+	private int playerOriginLifes = 1;
 
 	[SerializeField]
 	private AsteroidBehavior asteroidPrefab = default;
@@ -17,6 +21,11 @@ public class Game : MonoBehaviour
 
 	[SerializeField, Range(0.0001f, 0.5f)]
 	private float ySpawnPaddingFactor = 0.1f;
+
+	[SerializeField]
+	private GameObject gameOverUI = default;
+
+	private int playerLifes = default;
 
 	private int activeAsteroidsCount = 0;
 
@@ -35,6 +44,10 @@ public class Game : MonoBehaviour
 
 		xSpawnPadding = xSpawnPaddingFactor * Mathf.Abs(topRightBound.x - bottomLeftBound.x);
 		ySpawnPadding = ySpawnPaddingFactor * Mathf.Abs(topRightBound.y - bottomLeftBound.y);
+
+		player.onPlayerDestroyCallback += OnPlayerDestroy;
+
+		playerLifes = playerOriginLifes;
 
 		SpawnAsteroids();
 	}
@@ -120,6 +133,16 @@ public class Game : MonoBehaviour
 			asteroid.onAsteroidDestroyCallback = OnAsteroidDestroy;
 
 			activeAsteroidsCount++;
+		}
+	}
+
+	private void OnPlayerDestroy()
+	{
+		playerLifes--;
+
+		if (playerLifes == 0)
+		{
+			gameOverUI.SetActive(true);
 		}
 	}
 
