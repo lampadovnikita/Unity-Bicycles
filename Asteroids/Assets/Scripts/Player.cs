@@ -15,6 +15,10 @@ public class Player : MonoBehaviour
 		Left
 	}
 
+	public delegate void OnPlayerDestroy();
+
+	public OnPlayerDestroy onPlayerDestroyCallback;
+
 	[SerializeField]
 	private float mainForce = 1000f;
 
@@ -32,6 +36,11 @@ public class Player : MonoBehaviour
 
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
+		if (onPlayerDestroyCallback != null)
+		{ 
+			onPlayerDestroyCallback();
+		}
+
 		gameObject.SetActive(false);
 	}
 
