@@ -28,6 +28,9 @@ public class Game : MonoBehaviour
 	private GameObject gameOverUI = default;
 
 	[SerializeField]
+	private GameObject pauseUI = default;
+
+	[SerializeField]
 	private TextMeshProUGUI scoreTextMeshPro = default;
 
 	private int score = 0;
@@ -41,6 +44,8 @@ public class Game : MonoBehaviour
 
 	private Vector3 topRightBound = default;
 	private Vector3 bottomLeftBound = default;
+
+	private bool isGamePaused = false;
 
 	private void Start()
 	{
@@ -65,27 +70,56 @@ public class Game : MonoBehaviour
 	{
 		if (player.isActiveAndEnabled == true)
 		{
-			if (Input.GetAxisRaw("Vertical") > 0)
+			if (isGamePaused == false)
 			{
-				player.AddRelativeForce(Player.ForceDirection.Up);
+				if (Input.GetAxisRaw("Vertical") > 0)
+				{
+					player.AddRelativeForce(Player.ForceDirection.Up);
+				}
+				if (Input.GetAxisRaw("Horizontal") > 0)
+				{
+					player.AddRotation(Player.RotationDirection.Right);
+				}
+				if (Input.GetAxisRaw("Vertical") < 0)
+				{
+					player.AddRelativeForce(Player.ForceDirection.Down);
+				}
+				if (Input.GetAxisRaw("Horizontal") < 0)
+				{
+					player.AddRotation(Player.RotationDirection.Left);
+				}
+				if (Input.GetButtonDown("Fire1"))
+				{
+					player.GetComponent<ShootBehavior>().Shoot();
+				}
 			}
-			if (Input.GetAxisRaw("Horizontal") > 0)
+
+			if (Input.GetButtonDown("Cancel"))
 			{
-				player.AddRotation(Player.RotationDirection.Right);
-			}
-			if (Input.GetAxisRaw("Vertical") < 0)
-			{
-				player.AddRelativeForce(Player.ForceDirection.Down);
-			}
-			if (Input.GetAxisRaw("Horizontal") < 0)
-			{
-				player.AddRotation(Player.RotationDirection.Left);
-			}
-			if (Input.GetButtonDown("Fire1"))
-			{
-				player.GetComponent<ShootBehavior>().Shoot();
+				if (isGamePaused == true)
+				{
+					ResumeGame();
+				}
+				else
+				{
+					PauseGame();
+				}
 			}
 		}
+	}
+
+	public void PauseGame()
+	{
+		isGamePaused = true;
+		Time.timeScale = 0f;
+		pauseUI.SetActive(true);
+	}
+
+	public void ResumeGame()
+	{
+		isGamePaused = false;
+		Time.timeScale = 1f;
+		pauseUI.SetActive(false);
 	}
 
 	private void SpawnAsteroids()
