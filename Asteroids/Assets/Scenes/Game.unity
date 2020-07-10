@@ -1512,6 +1512,7 @@ MonoBehaviour:
   xSpawnPaddingFactor: 0.1
   ySpawnPaddingFactor: 0.1
   gameOverUI: {fileID: 703695238}
+  pauseUI: {fileID: 1892700002}
   scoreTextMeshPro: {fileID: 875633181}
 --- !u!4 &811578332
 Transform:
@@ -3074,8 +3075,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1892700004}
-        m_MethodName: RestartGame
+      - m_Target: {fileID: 811578331}
+        m_MethodName: ResumeGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
