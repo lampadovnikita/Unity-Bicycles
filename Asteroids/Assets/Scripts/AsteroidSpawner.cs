@@ -22,7 +22,7 @@ public class AsteroidSpawner : MonoBehaviour
 	private Vector3 topRightBound = default;
 	private Vector3 bottomLeftBound = default;
 
-	private void Start()
+	private void Awake()
 	{
 		float zDistance = transform.position.z - Camera.main.transform.position.z;
 
