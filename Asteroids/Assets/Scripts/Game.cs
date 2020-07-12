@@ -37,6 +37,9 @@ public class Game : MonoBehaviour
 
 	private void Awake()
 	{
+		// There should be a call of this method because if the user starts the game
+		// after returning to the main menu, then the game state is still paused and
+		// the time is still frozen.
 		ResumeGame();
 
 		score = 0;
