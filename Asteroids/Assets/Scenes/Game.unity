@@ -1230,6 +1230,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 4471520897120109546, guid: 50a9877e8b78898409aedd52e20dea02,
+        type: 3}
+      propertyPath: shootAudioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: a421c88e31c06c24791fbcc9cd18a8db, type: 3}
     - target: {fileID: 4471520897120109550, guid: 50a9877e8b78898409aedd52e20dea02,
         type: 3}
       propertyPath: m_LocalPosition.x
