@@ -40,7 +40,8 @@ public class WraparoundBehaviour : MonoBehaviour
 		Vector3 position = transform.position;
 
 		// Position should be swapped to a bound coordinate instead of inverted position of an object
-		// because that approach prevent bug with endless position inversion of an object that out of the screen area
+		// because that approach prevent bug with endless position inversion of an object that out of
+		// the screen area.
 		if (position.x > rightBound)
 		{
 			wrappedRigidbody2D.position = new Vector2(leftBound, position.y);
