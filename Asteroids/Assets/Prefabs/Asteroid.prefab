@@ -119,6 +119,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destroyAudioClip: {fileID: 8300000, guid: 3d22d69b9e6cead47adf8c409bc5d358, type: 3}
+  forceScale: 500
 --- !u!1 &2491483605160540573
 GameObject:
   m_ObjectHideFlags: 0

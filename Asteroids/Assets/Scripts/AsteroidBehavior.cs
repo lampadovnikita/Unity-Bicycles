@@ -9,6 +9,9 @@ public class AsteroidBehavior : MonoBehaviour
 	[SerializeField]
 	private AudioClip destroyAudioClip = default;
 
+	[SerializeField]
+	private float forceScale = 300f;
+
 	private Rigidbody2D asteroidRigidbody2D;
 
 	private void Awake()
@@ -17,7 +20,7 @@ public class AsteroidBehavior : MonoBehaviour
 
 		asteroidRigidbody2D.rotation = Random.Range(0f, 360f);
 
-		asteroidRigidbody2D.AddRelativeForce(100f * Vector3.up);
+		asteroidRigidbody2D.AddRelativeForce(forceScale * Vector3.up);
 	}
 
 	private void OnTriggerEnter2D(Collider2D collision)
