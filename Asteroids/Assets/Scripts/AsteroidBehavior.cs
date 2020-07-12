@@ -7,16 +7,16 @@ public class AsteroidBehavior : MonoBehaviour
 
 	public OnAsteroidDestroy onAsteroidDestroyCallback;
 
-	private Rigidbody2D rigidbody2D = default;
+	private Rigidbody2D asteroidRigidbody2D = default;
 
 
 	private void Start()
 	{
-		rigidbody2D = GetComponent<Rigidbody2D>();
+		asteroidRigidbody2D = GetComponent<Rigidbody2D>();
 
-		rigidbody2D.rotation = Random.Range(0f, 360f);
+		asteroidRigidbody2D.rotation = Random.Range(0f, 360f);
 
-		rigidbody2D.AddRelativeForce(100f * Vector3.up);
+		asteroidRigidbody2D.AddRelativeForce(100f * Vector3.up);
 	}
 
 	private void OnTriggerEnter2D(Collider2D collision)
