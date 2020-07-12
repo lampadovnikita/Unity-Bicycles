@@ -8,9 +8,9 @@ public class ShootBehavior : MonoBehaviour
 	[SerializeField]
 	private AudioClip shootAudioClip = default;
 
-	private AudioSource audioSource = default;
+	private AudioSource audioSource;
 
-	public void Start()
+	public void Awake()
 	{
 		audioSource = GetComponent<AudioSource>();
 	}

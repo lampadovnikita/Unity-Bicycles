@@ -4,13 +4,11 @@
 public class AsteroidBehavior : MonoBehaviour
 {
 	public delegate void OnAsteroidDestroy();
-
 	public OnAsteroidDestroy onAsteroidDestroyCallback;
 
-	private Rigidbody2D asteroidRigidbody2D = default;
+	private Rigidbody2D asteroidRigidbody2D;
 
-
-	private void Start()
+	private void Awake()
 	{
 		asteroidRigidbody2D = GetComponent<Rigidbody2D>();
 

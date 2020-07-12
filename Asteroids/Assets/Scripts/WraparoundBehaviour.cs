@@ -11,12 +11,15 @@ public class WraparoundBehaviour : MonoBehaviour
 	private float bottomBound;
 	private float leftBound;
 
-	private Rigidbody2D _rigidbody2D;
+	private Rigidbody2D wrappedRigidbody2D;
+
+	private void Awake()
+	{
+		wrappedRigidbody2D = transform.GetComponent<Rigidbody2D>();
+	}
 
 	private void Start()
 	{
-		_rigidbody2D = transform.GetComponent<Rigidbody2D>();
-
 		float zDistance = transform.position.z - Camera.main.transform.position.z;
 
 		Vector3 _bottomLeft = Camera.main.ViewportToWorldPoint(new Vector3(0f, 0f, zDistance));
@@ -40,19 +43,19 @@ public class WraparoundBehaviour : MonoBehaviour
 		// because that approach prevent bug with endless position inversion of an object that out of the screen area
 		if (position.x > rightBound)
 		{
-			_rigidbody2D.position = new Vector2(leftBound, position.y);
+			wrappedRigidbody2D.position = new Vector2(leftBound, position.y);
 		}
 		else if (position.x < leftBound)
 		{
-			_rigidbody2D.position = new Vector2(rightBound, position.y);
+			wrappedRigidbody2D.position = new Vector2(rightBound, position.y);
 		}
 		else if (position.y > upperBound)
 		{
-			_rigidbody2D.position = new Vector2(position.x, bottomBound);
+			wrappedRigidbody2D.position = new Vector2(position.x, bottomBound);
 		}
 		else if (position.y < bottomBound)
 		{
-			_rigidbody2D.position = new Vector2(position.x, upperBound);
+			wrappedRigidbody2D.position = new Vector2(position.x, upperBound);
 		}
 	}
 }

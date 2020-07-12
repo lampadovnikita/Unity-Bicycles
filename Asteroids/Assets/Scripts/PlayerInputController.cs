@@ -5,9 +5,9 @@ using UnityEngine;
 [RequireComponent(typeof(Player))]
 public class PlayerInputController : MonoBehaviour
 {
-	private Player player = default;
+	private Player player;
 
-	private void Start()
+	private void Awake()
 	{
 		player = GetComponent<Player>();
 	}

@@ -17,7 +17,6 @@ public class Player : MonoBehaviour
 	}
 
 	public delegate void OnPlayerDestroy();
-
 	public OnPlayerDestroy onPlayerDestroyCallback;
 
 	[SerializeField]
@@ -29,15 +28,17 @@ public class Player : MonoBehaviour
 	[SerializeField]
 	private AudioClip destroyAudioClip = default;
 
+	[SerializeField]
+	private float maxAxisVelocity = 42f;
+
 	private AudioSource playerAudioSource;
 
 	private Rigidbody2D playerRigidbody2D;
 
-	private float maxAxisVelocity = 42f;
 
 	private bool isAlive = true;
 
-	private void Start()
+	private void Awake()
 	{
 		playerRigidbody2D = GetComponent<Rigidbody2D>();
 
@@ -80,7 +81,7 @@ public class Player : MonoBehaviour
 	public void AddRelativeForce(ForceDirection forceDirection)
 	{
 		if (isAlive == true)
-		{ 
+		{
 			Vector2 forceDirectionVector = Vector2.zero;
 			switch (forceDirection)
 			{
@@ -114,7 +115,7 @@ public class Player : MonoBehaviour
 	public void AddRotation(RotationDirection rotationDirection)
 	{
 		if (isAlive == true)
-		{ 
+		{
 			float rotationDirectionValue = 0f;
 			switch (rotationDirection)
 			{

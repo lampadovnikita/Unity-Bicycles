@@ -16,11 +16,11 @@ public class AsteroidSpawner : MonoBehaviour
 	[SerializeField, Range(0.0001f, 0.5f)]
 	private float ySpawnPaddingFactor = 0.1f;
 
-	private float xSpawnPadding = default;
-	private float ySpawnPadding = default;
+	private float xSpawnPadding;
+	private float ySpawnPadding;
 
-	private Vector3 topRightBound = default;
-	private Vector3 bottomLeftBound = default;
+	private Vector3 topRightBound;
+	private Vector3 bottomLeftBound;
 
 	private void Awake()
 	{

@@ -43,19 +43,24 @@ public class Game : MonoBehaviour
 	[SerializeField]
 	private TextMeshProUGUI scoreTextMeshPro = default;
 
-	private int score = 0;
+	private int score;
 
-	private int playerLifes = default;
+	private int currentPlayerLifes;
 
-	private int activeAsteroidsCount = 0;
+	private int activeAsteroidsCount;
 
-	private bool isGamePaused = false;
+	private void Awake()
+	{
+		score = 0;
+
+		currentPlayerLifes = playerOriginLifes;
+
+		activeAsteroidsCount = 0;
+	}
 
 	private void Start()
 	{
 		player.onPlayerDestroyCallback += OnPlayerDestroy;
-
-		playerLifes = playerOriginLifes;
 
 		scoreTextMeshPro.text = score.ToString();
 
@@ -66,7 +71,7 @@ public class Game : MonoBehaviour
 	{
 		if (Input.GetButtonDown("Cancel"))
 		{
-			if (isGamePaused == true)
+			if (CurrentGameState == GameState.Pause)
 			{
 				ResumeGame();
 			}
@@ -93,9 +98,9 @@ public class Game : MonoBehaviour
 
 	private void OnPlayerDestroy()
 	{
-		playerLifes--;
+		currentPlayerLifes--;
 
-		if (playerLifes == 0)
+		if (currentPlayerLifes == 0)
 		{
 			gameOverUI.SetActive(true);
 		}
