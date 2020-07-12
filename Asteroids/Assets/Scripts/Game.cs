@@ -6,6 +6,25 @@ using UnityEngine.UI;
 
 public class Game : MonoBehaviour
 {
+	public enum GameState
+	{
+		Active,
+		Pause
+	}
+
+	private static GameState _curentGameState;
+	public static GameState CurrentGameState
+	{
+		get
+		{
+			return _curentGameState;
+		}
+		private set
+		{
+			_curentGameState = value;
+		}
+	}
+
 	[SerializeField]
 	private Player player = default;
 
@@ -45,56 +64,29 @@ public class Game : MonoBehaviour
 
 	private void Update()
 	{
-		if (player.isActiveAndEnabled == true)
+		if (Input.GetButtonDown("Cancel"))
 		{
-			if (isGamePaused == false)
+			if (isGamePaused == true)
 			{
-				if (Input.GetAxisRaw("Vertical") > 0)
-				{
-					player.AddRelativeForce(Player.ForceDirection.Up);
-				}
-				if (Input.GetAxisRaw("Horizontal") > 0)
-				{
-					player.AddRotation(Player.RotationDirection.Right);
-				}
-				if (Input.GetAxisRaw("Vertical") < 0)
-				{
-					player.AddRelativeForce(Player.ForceDirection.Down);
-				}
-				if (Input.GetAxisRaw("Horizontal") < 0)
-				{
-					player.AddRotation(Player.RotationDirection.Left);
-				}
-				if (Input.GetButtonDown("Fire1"))
-				{
-					player.GetComponent<ShootBehavior>().Shoot();
-				}
+				ResumeGame();
 			}
-
-			if (Input.GetButtonDown("Cancel"))
+			else
 			{
-				if (isGamePaused == true)
-				{
-					ResumeGame();
-				}
-				else
-				{
-					PauseGame();
-				}
+				PauseGame();
 			}
 		}
 	}
 
 	public void PauseGame()
 	{
-		isGamePaused = true;
+		CurrentGameState = GameState.Pause;
 		Time.timeScale = 0f;
 		pauseUI.SetActive(true);
 	}
 
 	public void ResumeGame()
 	{
-		isGamePaused = false;
+		CurrentGameState = GameState.Active;
 		Time.timeScale = 1f;
 		pauseUI.SetActive(false);
 	}
@@ -112,7 +104,7 @@ public class Game : MonoBehaviour
 	private void OnAsteroidDestroy()
 	{
 		activeAsteroidsCount--;
-		
+
 		score += 50;
 		scoreTextMeshPro.text = score.ToString();
 

@@ -93,6 +93,7 @@ GameObject:
   - component: {fileID: 4471520897120109548}
   - component: {fileID: 4471520897120109547}
   - component: {fileID: 4471520897120109551}
+  - component: {fileID: 4265090532001603948}
   - component: {fileID: 4471520897120109549}
   - component: {fileID: 4471520897120109546}
   m_Layer: 8
@@ -193,6 +194,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainForce: 1000
   rotationForce: 275
+--- !u!114 &4265090532001603948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4471520897120109552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d254f5327c3c93b4aac653c7a962e8f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &4471520897120109549
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -220,3 +233,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 3377676361346697515, guid: a396b5911eba40c4ca9180537a8cd025,
     type: 3}
+  _shootAudioClip: {fileID: 0}
