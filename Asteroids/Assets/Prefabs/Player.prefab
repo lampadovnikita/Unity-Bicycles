@@ -291,6 +291,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainForce: 1000
   rotationForce: 275
+  destroyAudioClip: {fileID: 8300000, guid: ed666941707abcc45af72541537cfcdc, type: 3}
 --- !u!114 &4265090532001603948
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -330,4 +331,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 3377676361346697515, guid: a396b5911eba40c4ca9180537a8cd025,
     type: 3}
-  shootAudioClip: {fileID: 0}
+  shootAudioClip: {fileID: 8300000, guid: a421c88e31c06c24791fbcc9cd18a8db, type: 3}
