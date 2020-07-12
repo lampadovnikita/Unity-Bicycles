@@ -66,7 +66,7 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -118,6 +118,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0024c7983d2c9fd42a27c4b6e66052be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  destroyAudioClip: {fileID: 8300000, guid: 3d22d69b9e6cead47adf8c409bc5d358, type: 3}
 --- !u!1 &2491483605160540573
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,6 +6,9 @@ public class AsteroidBehavior : MonoBehaviour
 	public delegate void OnAsteroidDestroy();
 	public OnAsteroidDestroy onAsteroidDestroyCallback;
 
+	[SerializeField]
+	private AudioClip destroyAudioClip = default;
+
 	private Rigidbody2D asteroidRigidbody2D;
 
 	private void Awake()
@@ -19,6 +22,8 @@ public class AsteroidBehavior : MonoBehaviour
 
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
+		AudioManager.Instance.GlobalAudioSource.PlayOneShot(destroyAudioClip);
+
 		if (onAsteroidDestroyCallback != null)
 		{
 			onAsteroidDestroyCallback();

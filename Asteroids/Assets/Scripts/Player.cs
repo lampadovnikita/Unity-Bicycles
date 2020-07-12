@@ -31,18 +31,16 @@ public class Player : MonoBehaviour
 	[SerializeField]
 	private float maxAxisVelocity = 42f;
 
-	private AudioSource playerAudioSource;
+	[SerializeField]
+	private float destructionTime = 1f; // In seconds
 
 	private Rigidbody2D playerRigidbody2D;
-
 
 	private bool isAlive = true;
 
 	private void Awake()
 	{
 		playerRigidbody2D = GetComponent<Rigidbody2D>();
-
-		playerAudioSource = GetComponent<AudioSource>();
 	}
 
 	private void OnTriggerEnter2D(Collider2D collision)
@@ -54,20 +52,12 @@ public class Player : MonoBehaviour
 	{
 		isAlive = false;
 		playerRigidbody2D.velocity = Vector2.zero;
-		playerRigidbody2D.freezeRotation = true;
 
 		if (destroyAudioClip != null)
 		{
-			if (playerAudioSource != null)
-			{
-				playerAudioSource.PlayOneShot(destroyAudioClip, 1f);
-			}
-			else
-			{
-				Debug.Log("Audio source is equal to null, but audio clip exist");
-			}
+			AudioManager.Instance.GlobalAudioSource.PlayOneShot(destroyAudioClip);
 
-			yield return new WaitForSeconds(destroyAudioClip.length);
+			yield return new WaitForSeconds(destructionTime);
 		}
 
 		if (onPlayerDestroyCallback != null)
