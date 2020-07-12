@@ -9,18 +9,7 @@ public class Game : MonoBehaviour
 		Pause
 	}
 
-	private static GameState _curentGameState;
-	public static GameState CurrentGameState
-	{
-		get
-		{
-			return _curentGameState;
-		}
-		private set
-		{
-			_curentGameState = value;
-		}
-	}
+	public static GameState CurrentGameState { get; private set; } = GameState.Active;
 
 	[SerializeField]
 	private Player player = default;
@@ -48,6 +37,8 @@ public class Game : MonoBehaviour
 
 	private void Awake()
 	{
+		ResumeGame();
+
 		score = 0;
 
 		currentPlayerLifes = playerOriginLifes;
