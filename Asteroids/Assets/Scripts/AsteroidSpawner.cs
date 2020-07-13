@@ -31,7 +31,7 @@ public class AsteroidSpawner : MonoBehaviour
 		ySpawnPadding = ySpawnPaddingFactor * Mathf.Abs(topRightBound.y - bottomLeftBound.y);
 	}
 
-	public int SpawnAsteroids(AsteroidBehavior.OnAsteroidDestroy onAsteroidDestroy)
+	public int SpawnAsteroids(AsteroidBehavior.AsteroidDestroy onAsteroidDestroyCallback)
 	{
 		Vector3 spawnPosition = new Vector3();
 		spawnPosition.z = transform.position.z;
@@ -83,9 +83,9 @@ public class AsteroidSpawner : MonoBehaviour
 
 			asteroid = Instantiate(asteroidPrefab, spawnPosition, Quaternion.identity);
 
-			if (onAsteroidDestroy != null)
+			if (onAsteroidDestroyCallback != null)
 			{ 
-				asteroid.onAsteroidDestroyCallback += onAsteroidDestroy;			
+				asteroid.OnAsteroidDestroy += onAsteroidDestroyCallback;			
 			}
 		}
 

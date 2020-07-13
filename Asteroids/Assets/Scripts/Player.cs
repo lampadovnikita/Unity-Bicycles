@@ -16,8 +16,8 @@ public class Player : MonoBehaviour
 		Left
 	}
 
-	public delegate void OnPlayerDestroy();
-	public OnPlayerDestroy onPlayerDestroyCallback;
+	public delegate void PlayerDestroy();
+	public event PlayerDestroy OnPlayerDestroy;
 
 	[SerializeField]
 	private float mainForce = 1000f;
@@ -45,10 +45,7 @@ public class Player : MonoBehaviour
 			AudioManager.Instance.GlobalAudioSource.PlayOneShot(destroyAudioClip);
 		}
 
-		if (onPlayerDestroyCallback != null)
-		{
-			onPlayerDestroyCallback();
-		}
+		OnPlayerDestroy?.Invoke();
 
 		gameObject.SetActive(false);
 	}

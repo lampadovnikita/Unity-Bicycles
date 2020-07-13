@@ -3,8 +3,8 @@
 [RequireComponent(typeof(Rigidbody2D))]
 public class AsteroidBehavior : MonoBehaviour
 {
-	public delegate void OnAsteroidDestroy();
-	public OnAsteroidDestroy onAsteroidDestroyCallback;
+	public delegate void AsteroidDestroy();
+	public event AsteroidDestroy OnAsteroidDestroy;
 
 	[SerializeField]
 	private AudioClip destroyAudioClip = default;
@@ -27,10 +27,7 @@ public class AsteroidBehavior : MonoBehaviour
 	{
 		AudioManager.Instance.GlobalAudioSource.PlayOneShot(destroyAudioClip);
 
-		if (onAsteroidDestroyCallback != null)
-		{
-			onAsteroidDestroyCallback();
-		}
+		OnAsteroidDestroy?.Invoke();
 
 		Destroy(gameObject);
 	}
