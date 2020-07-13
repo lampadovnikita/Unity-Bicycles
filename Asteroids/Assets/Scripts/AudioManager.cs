@@ -7,7 +7,7 @@ public class AudioManager : MonoBehaviour
 	public static AudioManager Instance { get; private set; }
 
 	[SerializeField]
-	private AudioSource _globalAudioSource;
+	private AudioSource _globalAudioSource = default;
 
 	public AudioSource GlobalAudioSource
 	{
