@@ -31,9 +31,6 @@ public class Player : MonoBehaviour
 	[SerializeField]
 	private float maxAxisVelocity = 42f;
 
-	[SerializeField]
-	private float destructionTime = 1f; // In seconds
-
 	private Rigidbody2D playerRigidbody2D;
 
 	private void Awake()
@@ -56,6 +53,12 @@ public class Player : MonoBehaviour
 		gameObject.SetActive(false);
 	}
 
+	public void Respawn()
+	{
+		transform.position = new Vector3(0f, 0f, transform.position.z);
+		transform.rotation = Quaternion.identity;
+		gameObject.SetActive(true);
+	}
 
 	public void AddRelativeForce(ForceDirection forceDirection)
 	{

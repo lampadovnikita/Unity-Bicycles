@@ -1,5 +1,8 @@
-﻿using TMPro;
+﻿using System.Collections;
+using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Game : MonoBehaviour
 {
@@ -16,6 +19,12 @@ public class Game : MonoBehaviour
 
 	[SerializeField]
 	private int playerOriginLifes = 1;
+
+	[SerializeField]
+	private List<Image> lifeCountImages = default;
+
+	[SerializeField]
+	private float playerRespawnDelay = 1f; // In seconds
 
 	[SerializeField]
 	private AsteroidSpawner asteroidSpawner = default;
@@ -91,10 +100,23 @@ public class Game : MonoBehaviour
 	{
 		currentPlayerLifes--;
 
+		lifeCountImages[playerOriginLifes - currentPlayerLifes - 1].enabled = false;
+
 		if (currentPlayerLifes == 0)
 		{
 			gameOverUI.SetActive(true);
 		}
+		else 
+		{
+			StartCoroutine(RespawnPlayer());
+		}
+	}
+
+	private IEnumerator RespawnPlayer()
+	{
+		yield return new WaitForSeconds(playerRespawnDelay);
+
+		player.Respawn();
 	}
 
 	private void OnAsteroidDestroy()
