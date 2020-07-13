@@ -60,7 +60,7 @@ public class Game : MonoBehaviour
 
 	private void Start()
 	{
-		player.onPlayerDestroyCallback += OnPlayerDestroy;
+		player.OnPlayerDestroy += OnPlayerDestroy;
 
 		scoreTextMeshPro.text = score.ToString();
 
