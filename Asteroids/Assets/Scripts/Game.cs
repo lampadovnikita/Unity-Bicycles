@@ -119,9 +119,10 @@ public class Game : MonoBehaviour
 		player.Respawn();
 	}
 
-	private void OnAsteroidDestroy()
+	private void OnAsteroidDestroy(int asteroidShardsNumber)
 	{
 		activeAsteroidsCount--;
+		activeAsteroidsCount += asteroidShardsNumber;
 
 		score += 50;
 		scoreTextMeshPro.text = score.ToString();

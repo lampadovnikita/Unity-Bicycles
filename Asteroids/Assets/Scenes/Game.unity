@@ -2891,7 +2891,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   asteroidPrefab: {fileID: -1039346301948365101, guid: 2d920430658ad8341bbfd3f5d5680b6c,
     type: 3}
-  asteroidsSpawnLimit: 10
+  asteroidsSpawnLimit: 6
   xSpawnPaddingFactor: 0.1
   ySpawnPaddingFactor: 0.1
 --- !u!4 &1583992204

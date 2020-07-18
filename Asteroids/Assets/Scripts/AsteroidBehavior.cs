@@ -3,7 +3,7 @@
 [RequireComponent(typeof(Rigidbody2D))]
 public class AsteroidBehavior : MonoBehaviour
 {
-	public delegate void AsteroidDestroy();
+	public delegate void AsteroidDestroy(int asteroidShardsNumber);
 	public event AsteroidDestroy OnAsteroidDestroy;
 
 	[SerializeField]
@@ -12,8 +12,14 @@ public class AsteroidBehavior : MonoBehaviour
 	[SerializeField]
 	private float forceScale = 300f;
 
-	private Rigidbody2D asteroidRigidbody2D;
+	[SerializeField]
+	private AsteroidBehavior shardPrefab = default;
 
+	[SerializeField]
+	private int shardsNumber = 3;
+
+	private Rigidbody2D asteroidRigidbody2D;
+	
 	private void Awake()
 	{
 		asteroidRigidbody2D = GetComponent<Rigidbody2D>();
@@ -27,7 +33,25 @@ public class AsteroidBehavior : MonoBehaviour
 	{
 		AudioManager.Instance.GlobalAudioSource.PlayOneShot(destroyAudioClip);
 
-		OnAsteroidDestroy?.Invoke();
+		if (shardPrefab != null)
+		{
+			OnAsteroidDestroy?.Invoke(shardsNumber);
+		}
+		else
+		{
+			OnAsteroidDestroy?.Invoke(0);
+		}
+
+		AsteroidBehavior shard;
+		if (shardPrefab != null)
+		{
+			for (int i = 0; i < shardsNumber; i++)
+			{
+				shard = Instantiate(shardPrefab);
+				shard.transform.position = transform.position;
+				shard.OnAsteroidDestroy += this.OnAsteroidDestroy;
+			}
+		}
 
 		Destroy(gameObject);
 	}
