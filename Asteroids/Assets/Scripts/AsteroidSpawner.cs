@@ -6,7 +6,7 @@ public class AsteroidSpawner : MonoBehaviour
 	private AsteroidBehavior asteroidPrefab = default;
 
 	[SerializeField]
-	private int asteroidsSpawnLimit = 10;
+	private int asteroidsPerSpawn = 10;
 
 	[SerializeField, Range(0.0001f, 0.5f)]
 	private float xSpawnPaddingFactor = 0.1f;
@@ -41,7 +41,7 @@ public class AsteroidSpawner : MonoBehaviour
 		float xIndent;
 		float yIndent;
 
-		for (int i = 0; i < asteroidsSpawnLimit; i++)
+		for (int i = 0; i < asteroidsPerSpawn; i++)
 		{
 			// Choose the side along to which we wil generate a position.
 			// The generated position locates near chosen axis with some padding,
@@ -89,6 +89,6 @@ public class AsteroidSpawner : MonoBehaviour
 			}
 		}
 
-		return asteroidsSpawnLimit;
+		return asteroidsPerSpawn;
 	}
 }
