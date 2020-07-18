@@ -6,7 +6,7 @@ public class AsteroidSpawner : MonoBehaviour
 	private AsteroidBehavior asteroidPrefab = default;
 
 	[SerializeField]
-	private int asteroidsPerSpawn = 10;
+	private int asteroidsPerSpawn = 4;
 
 	[SerializeField, Range(0.0001f, 0.5f)]
 	private float xSpawnPaddingFactor = 0.1f;
