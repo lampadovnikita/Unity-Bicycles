@@ -10,7 +10,7 @@ public class AsteroidBehavior : MonoBehaviour
 	private AudioClip destroyAudioClip = default;
 
 	[SerializeField]
-	private float forceScale = 300f;
+	private float forceScale = 500f;
 
 	[SerializeField]
 	private AsteroidBehavior shardPrefab = default;
