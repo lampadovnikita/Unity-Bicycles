@@ -122,7 +122,7 @@ public class Player : MonoBehaviour
 	{
 		if (destroyAudioClip != null)
 		{
-			AudioManager.Instance.GlobalAudioSource.PlayOneShot(destroyAudioClip);
+			AudioManager.Instance.EffectsAudioSource.PlayOneShot(destroyAudioClip);
 		}
 
 		OnPlayerDestroy?.Invoke();

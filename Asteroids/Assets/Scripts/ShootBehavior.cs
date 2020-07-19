@@ -14,7 +14,7 @@ public class ShootBehavior : MonoBehaviour
 
 		if (shootAudioClip != null)
 		{
-			AudioManager.Instance.GlobalAudioSource.PlayOneShot(shootAudioClip);
+			AudioManager.Instance.EffectsAudioSource.PlayOneShot(shootAudioClip);
 		}
 	}
 }

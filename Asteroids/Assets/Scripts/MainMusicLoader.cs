@@ -10,8 +10,8 @@ public class MainMusicLoader : MonoBehaviour
     private void Start()
     {
         AudioManager instance = AudioManager.Instance;
-        instance.GlobalAudioSource.clip = MainMusicTheme;
-        instance.GlobalAudioSource.loop = true;
-        instance.GlobalAudioSource.Play();
+        instance.MusicAudioSource.clip = MainMusicTheme;
+        instance.MusicAudioSource.loop = true;
+        instance.MusicAudioSource.Play();
     }
 }

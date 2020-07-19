@@ -31,7 +31,7 @@ public class AsteroidBehavior : MonoBehaviour
 
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
-		AudioManager.Instance.GlobalAudioSource.PlayOneShot(destroyAudioClip);
+		AudioManager.Instance.EffectsAudioSource.PlayOneShot(destroyAudioClip);
 
 		if (shardPrefab != null)
 		{
