@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 
-public class SettingsMenu : MonoBehaviour
+public class OptionsMenu : MonoBehaviour
 {
     [SerializeField]
     private AudioMixer generalAudioMixer = default;
