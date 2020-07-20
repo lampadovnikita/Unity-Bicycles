@@ -11,6 +11,9 @@ TextureImporter:
   - first:
       213: -6111476656483265550
     second: Untitled 07-13-2020 12-12-06_1
+  - first:
+      213: -1839377291145181718
+    second: Asteroid_0
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -120,7 +123,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Untitled 07-13-2020 12-12-06_0
+      name: Asteroid_0
       rect:
         serializedVersion: 2
         x: 192
@@ -128,14 +131,14 @@ TextureImporter:
         width: 656
         height: 640
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7cca2616f5bfcfa80800000000000000
-      internalID: -8431588015270089529
+      spriteID: ae50f5169183976e0800000000000000
+      internalID: -1839377291145181718
       vertices: []
       indices: 
       edges: []
