@@ -4,22 +4,13 @@
 public class BulletBehavior : MonoBehaviour
 {
 	[SerializeField]
-	private float force = 1500f;
-
-	[SerializeField]
 	private float maxLifeTime = 2f;
-
-	private Rigidbody2D bulletRigidBody2D;
 
 	private float lifeTimeStorage;
 
-	private void Awake()
+	private void OnEnable()
 	{
 		lifeTimeStorage = 0f;
-
-		bulletRigidBody2D = GetComponent<Rigidbody2D>();
-
-		bulletRigidBody2D.AddRelativeForce(force * Vector2.up);
 	}
 
 	private void Update()
@@ -28,12 +19,17 @@ public class BulletBehavior : MonoBehaviour
 
 		if (lifeTimeStorage > maxLifeTime)
 		{
-			Destroy(gameObject);
+			Hide();
 		}
 	}
 
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
-		Destroy(gameObject);
+		Hide();
+	}
+
+	private void Hide()
+	{
+		gameObject.SetActive(false);
 	}
 }
