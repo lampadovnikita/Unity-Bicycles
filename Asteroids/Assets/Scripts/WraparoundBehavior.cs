@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class WraparoundBehaviour : MonoBehaviour
+public class WraparoundBehavior : MonoBehaviour
 {
 	[SerializeField]
 	private SpriteRenderer spriteRenderer = default;
