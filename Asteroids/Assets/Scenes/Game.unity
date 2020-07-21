@@ -823,7 +823,7 @@ GameObject:
   m_Component:
   - component: {fileID: 368643465}
   m_Layer: 0
-  m_Name: PoolsContainer
+  m_Name: Pools Container
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3059,7 +3059,7 @@ GameObject:
   - component: {fileID: 1655102407}
   - component: {fileID: 1655102408}
   m_Layer: 0
-  m_Name: BulletPool
+  m_Name: Bullet Pool
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
