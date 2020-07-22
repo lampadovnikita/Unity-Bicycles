@@ -13,47 +13,66 @@ public class AsteroidBehavior : MonoBehaviour
 	private float forceScale = 500f;
 
 	[SerializeField]
-	private AsteroidBehavior shardPrefab = default;
+	private Pool shardPool = default;
 
 	[SerializeField]
 	private int shardsNumber = 3;
 
 	private Rigidbody2D asteroidRigidbody2D;
-	
+
 	private void Awake()
 	{
 		asteroidRigidbody2D = GetComponent<Rigidbody2D>();
-
-		asteroidRigidbody2D.rotation = Random.Range(0f, 360f);
-
-		asteroidRigidbody2D.AddRelativeForce(forceScale * Vector3.up);
 	}
 
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
 		AudioManager.Instance.EffectsAudioSource.PlayOneShot(destroyAudioClip);
 
-		if (shardPrefab != null)
+		if (shardPool != null)
 		{
 			OnAsteroidDestroy?.Invoke(shardsNumber);
+
+			GameObject shard;
+			AsteroidBehavior shardAsteroidBehavior;
+			for (int i = 0; i < shardsNumber; i++)
+			{
+				shard = shardPool.GetObject();
+				shard.transform.position = transform.position;
+
+				shardAsteroidBehavior = shard.GetComponent<AsteroidBehavior>();
+				if (shardAsteroidBehavior != null)
+				{
+					shardAsteroidBehavior.AddRandomForceDirection();
+					shardAsteroidBehavior.OnAsteroidDestroy += this.OnAsteroidDestroy;
+				}
+				else
+				{
+					Debug.LogWarning("Asteroid spawns shards without asteroid behavior component!");
+				}
+			}
 		}
 		else
 		{
 			OnAsteroidDestroy?.Invoke(0);
 		}
 
-		AsteroidBehavior shard;
-		if (shardPrefab != null)
-		{
-			for (int i = 0; i < shardsNumber; i++)
-			{
-				shard = Instantiate(shardPrefab);
-				shard.transform.position = transform.position;
-				shard.OnAsteroidDestroy += this.OnAsteroidDestroy;
-			}
-		}
-
-		Destroy(gameObject);
+		Hide();
 	}
 
+	private void Hide()
+	{
+		gameObject.SetActive(false);
+		OnAsteroidDestroy = null;
+	}
+
+	public void AddRandomForceDirection()
+	{
+		float rotation = Random.Range(0f, 360f);
+
+		asteroidRigidbody2D.SetRotation(rotation);
+		gameObject.transform.eulerAngles = new Vector3(0f, 0f, rotation);
+
+		asteroidRigidbody2D.AddRelativeForce(forceScale * Vector3.up);
+	}
 }

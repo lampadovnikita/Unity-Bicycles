@@ -3,7 +3,7 @@
 public class AsteroidSpawner : MonoBehaviour
 {
 	[SerializeField]
-	private AsteroidBehavior asteroidPrefab = default;
+	private Pool asteroidPool = default;
 
 	[SerializeField]
 	private int asteroidsPerSpawn = 4;
@@ -36,7 +36,8 @@ public class AsteroidSpawner : MonoBehaviour
 		Vector3 spawnPosition = new Vector3();
 		spawnPosition.z = transform.position.z;
 
-		AsteroidBehavior asteroid;
+		GameObject asteroid;
+		AsteroidBehavior asteroidBehavior;
 
 		float xIndent;
 		float yIndent;
@@ -81,11 +82,23 @@ public class AsteroidSpawner : MonoBehaviour
 				spawnPosition.x = Random.Range(bottomLeftBound.x, topRightBound.x);
 			}
 
-			asteroid = Instantiate(asteroidPrefab, spawnPosition, Quaternion.identity);
+			asteroid = asteroidPool.GetObject();
 
-			if (onAsteroidDestroyCallback != null)
-			{ 
-				asteroid.OnAsteroidDestroy += onAsteroidDestroyCallback;			
+			asteroid.transform.position = spawnPosition;
+
+			asteroidBehavior = asteroid.GetComponent<AsteroidBehavior>();
+			if (asteroidBehavior != null)
+			{
+				asteroidBehavior.AddRandomForceDirection();
+
+				if (onAsteroidDestroyCallback != null)
+				{
+					asteroidBehavior.OnAsteroidDestroy += onAsteroidDestroyCallback;
+				}
+			}
+			else
+			{
+				Debug.LogWarning("Asteroid spawner spawns object without asteroid behavior component!");
 			}
 		}
 

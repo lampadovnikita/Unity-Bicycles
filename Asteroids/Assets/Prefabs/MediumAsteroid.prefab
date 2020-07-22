@@ -99,8 +99,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destroyAudioClip: {fileID: 8300000, guid: 3d22d69b9e6cead47adf8c409bc5d358, type: 3}
   forceScale: 750
-  shardPrefab: {fileID: 1603713990380507011, guid: 4e82a7a4b9f3f1845a3223d47dbd736a,
-    type: 3}
+  shardPool: {fileID: 11400000, guid: f5b6da0713c8c83428290a6070b828dc, type: 2}
   shardsNumber: 3
 --- !u!1 &2649980486945821018
 GameObject:

@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-
-public class Pool : MonoBehaviour
+[CreateAssetMenu]
+public class Pool : ScriptableObject
 {
 	[SerializeField]
 	private GameObject objectPrefab = default;
@@ -12,43 +12,58 @@ public class Pool : MonoBehaviour
 
 	private List<GameObject> objects;
 
-	private void Awake()
+	public void Initialize()
+	{
+		Initialize(null);
+	}
+
+	public void Initialize(GameObject parentObject)
 	{
 		objects = new List<GameObject>();
 
-		Pregenerate();
+		GameObject tmpObject;
+		for (int i = 0; i < numberOfPregenerated; i++)
+		{
+			tmpObject = CreateObject(parentObject);
+			tmpObject.SetActive(false);
+		}
 	}
 
 	public GameObject GetObject()
+	{
+		return GetObject(null);
+	}
+
+	public GameObject GetObject(GameObject parentObject)
 	{
 		foreach (GameObject obj in objects)
 		{
 			if (obj.activeInHierarchy == false)
 			{
+				if (parentObject != null)
+				{ 
+					obj.transform.parent = parentObject.transform;
+				}
+
 				obj.SetActive(true);
 				return obj;
 			}
 		}
 
-		GameObject newObject = CreateObject();
+		GameObject newObject = CreateObject(parentObject);
 
 		return newObject;
 	}
 
-	private void Pregenerate()
-	{
-		GameObject tmpObject;
-		for (int i = 0; i < numberOfPregenerated; i++)
-		{
-			tmpObject = CreateObject();
-			tmpObject.SetActive(false);
-		}
-	}
-
-	private GameObject CreateObject()
+	private GameObject CreateObject(GameObject parentObject)
 	{
 		GameObject newObject = Instantiate(objectPrefab);
-		newObject.transform.parent = gameObject.transform;
+
+		if (parentObject != null)
+		{ 
+			newObject.transform.parent = parentObject.transform;
+		}
+
 		objects.Add(newObject);
 
 		return newObject;
