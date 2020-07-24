@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class HighScores
 {
-	public static readonly uint SCORES_LENGTH = 3;
-	
+	public static readonly int SCORES_LENGTH = 3;
+
 	private static HighScores _instance;
 
 	private int[] scores;
@@ -41,6 +41,14 @@ public class HighScores
 
 	public int GetScore(int index)
 	{
+		if (index < 0 || index >= SCORES_LENGTH)
+		{
+			Debug.LogWarning("Invalid scores index = " + index);
+
+			index = Mathf.Clamp(index, 0, SCORES_LENGTH);
+			Debug.LogWarning("Index was clamped; index = " + index);
+		}
+
 		return scores[index];
 	}
 
