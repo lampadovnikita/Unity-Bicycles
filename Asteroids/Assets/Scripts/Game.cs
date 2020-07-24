@@ -44,6 +44,8 @@ public class Game : MonoBehaviour
 	[SerializeField]
 	private TextMeshProUGUI scoreTextMeshPro = default;
 
+	private HighScores highScores;
+
 	private int score;
 
 	private int currentPlayerLifes;
@@ -67,6 +69,8 @@ public class Game : MonoBehaviour
 		{
 			pool.Initialize(pregeneratedContainer);
 		}
+
+		highScores = HighScores.Instance;
 	}
 
 	private void Start()
@@ -115,12 +119,18 @@ public class Game : MonoBehaviour
 
 		if (currentPlayerLifes == 0)
 		{
-			gameOverUI.SetActive(true);
+			GameOver();
 		}
 		else 
 		{
 			StartCoroutine(RespawnPlayer());
 		}
+	}
+
+	private void GameOver()
+	{
+		gameOverUI.SetActive(true);
+		highScores.AddScore(score);
 	}
 
 	private IEnumerator RespawnPlayer()
