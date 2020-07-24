@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HighScores
 {
-	public const uint SCORES_LENGTH = 3;
+	public static readonly uint SCORES_LENGTH = 3;
 	
 	private static HighScores _instance;
 
