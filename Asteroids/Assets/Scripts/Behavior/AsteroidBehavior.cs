@@ -35,10 +35,13 @@ public class AsteroidBehavior : MonoBehaviour
 
 			GameObject shard;
 			AsteroidBehavior shardAsteroidBehavior;
+
+			float randomCircleDiameter = 2.5f;
 			for (int i = 0; i < shardsNumber; i++)
 			{
 				shard = shardPool.GetObject();
-				shard.transform.position = transform.position;
+				shard.transform.position = transform.position + 
+					(Vector3)(Random.insideUnitCircle * randomCircleDiameter);
 
 				shardAsteroidBehavior = shard.GetComponent<AsteroidBehavior>();
 				if (shardAsteroidBehavior != null)
