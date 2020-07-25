@@ -1512,6 +1512,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: b1cb4ee1f2ff1164bbd80b20d72cbbd7,
         type: 2}
+    - target: {fileID: 9064195086049626791, guid: 50a9877e8b78898409aedd52e20dea02,
+        type: 3}
+      propertyPath: shootForce
+      value: 3500
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 50a9877e8b78898409aedd52e20dea02, type: 3}
 --- !u!1 &633987594
