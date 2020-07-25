@@ -18,7 +18,11 @@ public class HighScoresTable : MonoBehaviour
 	private void Awake()
 	{
 		lineTemplate.gameObject.SetActive(false);
+	}
 
+	private void Start()
+	{
+		int score = 0;
 		for (int i = 0; i < lineCount; i++)
 		{
 			Transform lineTransform = Instantiate(lineTemplate, scoresContainer);
@@ -27,7 +31,16 @@ public class HighScoresTable : MonoBehaviour
 			lineTransform.gameObject.SetActive(true);
 
 			lineTransform.Find("Line Number Text").GetComponent<TextMeshProUGUI>().text = (i + 1) + ". ";
-			lineTransform.Find("Score Text").GetComponent<TextMeshProUGUI>().text = (10000 * i).ToString();
+
+			if (i < HighScores.Instance.ScoresData.scores.Length)
+			{
+				score = HighScores.Instance.ScoresData.scores[i];
+			}
+			else
+			{
+				score = 0;
+			}
+			lineTransform.Find("Score Text").GetComponent<TextMeshProUGUI>().text = score.ToString();
 		}
 	}
 }

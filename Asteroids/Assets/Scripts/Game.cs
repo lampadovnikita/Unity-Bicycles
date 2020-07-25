@@ -44,8 +44,6 @@ public class Game : MonoBehaviour
 	[SerializeField]
 	private TextMeshProUGUI scoreTextMeshPro = default;
 
-	private HighScores highScores;
-
 	private int score;
 
 	private int currentPlayerLifes;
@@ -69,8 +67,6 @@ public class Game : MonoBehaviour
 		{
 			pool.Initialize(pregeneratedContainer);
 		}
-
-		highScores = HighScores.Instance;
 	}
 
 	private void Start()
@@ -97,6 +93,11 @@ public class Game : MonoBehaviour
 		}
 	}
 
+	private void OnDestroy()
+	{
+		SaveHighScores();
+	}
+
 	public void PauseGame()
 	{
 		CurrentGameState = GameState.Pause;
@@ -121,7 +122,7 @@ public class Game : MonoBehaviour
 		{
 			GameOver();
 		}
-		else 
+		else
 		{
 			StartCoroutine(RespawnPlayer());
 		}
@@ -130,7 +131,7 @@ public class Game : MonoBehaviour
 	private void GameOver()
 	{
 		gameOverUI.SetActive(true);
-		highScores.AddScore(score);
+		HighScores.Instance.ScoresData.AttemptAddScore(score);
 	}
 
 	private IEnumerator RespawnPlayer()
@@ -152,5 +153,10 @@ public class Game : MonoBehaviour
 		{
 			activeAsteroidsCount = asteroidSpawner.SpawnAsteroids(OnAsteroidDestroy);
 		}
+	}
+
+	private void SaveHighScores()
+	{
+		HighScoresSerializer.Save(HighScores.Instance.ScoresData);
 	}
 }
