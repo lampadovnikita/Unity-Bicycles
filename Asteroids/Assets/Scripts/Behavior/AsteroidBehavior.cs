@@ -36,6 +36,8 @@ public class AsteroidBehavior : MonoBehaviour
 			GameObject shard;
 			AsteroidBehavior shardAsteroidBehavior;
 
+			// Random bias for asteroids shards make impossible to destroy all
+			// newly spawned shards easily
 			float randomCircleDiameter = 2.5f;
 			for (int i = 0; i < shardsNumber; i++)
 			{
