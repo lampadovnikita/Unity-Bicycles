@@ -3,6 +3,9 @@
 [RequireComponent(typeof(Player))]
 public class PlayerInputController : MonoBehaviour
 {
+	[SerializeField]
+	private ShootBehavior shootingSource = default;
+
 	private Player player;
 
 	private void Awake()
@@ -32,7 +35,7 @@ public class PlayerInputController : MonoBehaviour
 			}
 			if (Input.GetButtonDown("Fire1"))
 			{
-				player.GetComponent<ShootBehavior>().Shoot();
+				shootingSource.Shoot();
 			}
 		}
 	}

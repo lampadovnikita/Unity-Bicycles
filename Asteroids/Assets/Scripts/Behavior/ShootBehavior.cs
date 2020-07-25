@@ -11,6 +11,11 @@ public class ShootBehavior : MonoBehaviour
 	[SerializeField]
 	private AudioClip shootAudioClip = default;
 
+	private void OnDrawGizmos()
+	{
+		Gizmos.DrawWireSphere(transform.position, 0.3f);
+	}
+
 	public void Shoot()
 	{
 		GameObject bullet = bulletPool.GetObject();
