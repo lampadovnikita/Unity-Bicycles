@@ -39,6 +39,9 @@ public class Game : MonoBehaviour
 	private GameObject gameOverUI = default;
 
 	[SerializeField]
+	private TextMeshProUGUI gameOverScoreText = default;
+
+	[SerializeField]
 	private GameObject pauseUI = default;
 
 	[SerializeField]
@@ -130,6 +133,7 @@ public class Game : MonoBehaviour
 
 	private void GameOver()
 	{
+		gameOverScoreText.text = score.ToString();
 		gameOverUI.SetActive(true);
 		HighScores.Instance.ScoresData.AttemptAddScore(score);
 	}
