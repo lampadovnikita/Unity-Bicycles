@@ -25,21 +25,32 @@ public class OptionsMenu : MonoBehaviour
             musicVolumeSlider.value = data.musicVolume;
             effectsVolumeSlider.value = data.effectsVolume;        
         }
+
+        SetGeneralVolume(generalVolumeSlider.value);
+        SetMusicVolume(musicVolumeSlider.value);
+        SetEffectsVolume(effectsVolumeSlider.value);
     }
 
     public void SetGeneralVolume(float volume)
     {
-        generalAudioMixer.SetFloat("GeneralVolume", volume);
+        generalAudioMixer.SetFloat("GeneralVolume", ToDecibel(volume));
     }
 
     public void SetMusicVolume(float volume)
     {
-        generalAudioMixer.SetFloat("MusicVolume", volume);
+        generalAudioMixer.SetFloat("MusicVolume", ToDecibel(volume));
     }
 
     public void SetEffectsVolume(float volume)
     {
-        generalAudioMixer.SetFloat("EffectsVolume", volume);
+        generalAudioMixer.SetFloat("EffectsVolume", ToDecibel(volume));
+    }
+
+    private float ToDecibel(float volume)
+    {
+        volume = Mathf.Clamp(volume, 0.0001f, 1f);
+        
+        return 20 * Mathf.Log10(volume);
     }
 
     public void SaveOptions()
