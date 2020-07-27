@@ -1,68 +1,50 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu]
-public class Pool : ScriptableObject
+public class Pool : MonoBehaviour
 {
 	[SerializeField]
-	private GameObject objectPrefab = default;
+	private GameObject templateObject = default;
 
 	[SerializeField]
 	private int numberOfPregenerated = 0;
 
 	private List<GameObject> objects;
 
-	public void Initialize()
+	private void Awake()
 	{
-		Initialize(null);
-	}
+		templateObject.SetActive(false);
 
-	public void Initialize(GameObject parentObject)
-	{
 		objects = new List<GameObject>();
 
 		GameObject tmpObject;
 		for (int i = 0; i < numberOfPregenerated; i++)
 		{
-			tmpObject = CreateObject(parentObject);
+			tmpObject = CreateObject();
 			tmpObject.SetActive(false);
 		}
 	}
 
 	public GameObject GetObject()
 	{
-		return GetObject(null);
-	}
-
-	public GameObject GetObject(GameObject parentObject)
-	{
 		foreach (GameObject obj in objects)
 		{
 			if (obj.activeInHierarchy == false)
 			{
-				if (parentObject != null)
-				{ 
-					obj.transform.parent = parentObject.transform;
-				}
-
 				obj.SetActive(true);
 				return obj;
 			}
 		}
 
-		GameObject newObject = CreateObject(parentObject);
+		GameObject newObject = CreateObject();
 
 		return newObject;
 	}
 
-	private GameObject CreateObject(GameObject parentObject)
+	private GameObject CreateObject()
 	{
-		GameObject newObject = Instantiate(objectPrefab);
-
-		if (parentObject != null)
-		{ 
-			newObject.transform.parent = parentObject.transform;
-		}
+		GameObject newObject = Instantiate(templateObject);
+		newObject.transform.parent = templateObject.transform.parent;
 
 		objects.Add(newObject);
 

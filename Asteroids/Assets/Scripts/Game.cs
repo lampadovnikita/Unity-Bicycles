@@ -15,12 +15,6 @@ public class Game : MonoBehaviour
 	public static GameState CurrentGameState { get; private set; } = GameState.Active;
 
 	[SerializeField]
-	private List<Pool> pools = default;
-
-	[SerializeField]
-	private GameObject pregeneratedContainer = default;
-
-	[SerializeField]
 	private Player player = default;
 
 	[SerializeField]
@@ -65,11 +59,6 @@ public class Game : MonoBehaviour
 		currentPlayerLifes = playerOriginLifes;
 
 		activeAsteroidsCount = 0;
-
-		foreach (Pool pool in pools)
-		{
-			pool.Initialize(pregeneratedContainer);
-		}
 	}
 
 	private void Start()
