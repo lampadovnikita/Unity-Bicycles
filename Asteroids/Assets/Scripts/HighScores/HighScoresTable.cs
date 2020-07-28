@@ -12,8 +12,6 @@ public class HighScoresTable : MonoBehaviour
 	[SerializeField]
 	private int lineCount = 5;
 
-	[SerializeField]
-	private float templateHeight = 60f;
 
 	private void Awake()
 	{
@@ -22,12 +20,20 @@ public class HighScoresTable : MonoBehaviour
 
 	private void Start()
 	{
+		RectTransform containerRectTransform = scoresContainer.GetComponent<RectTransform>();
+		RectTransform lineTemplateRectTransform = lineTemplate.GetComponent<RectTransform>();
+
+		float containerHeight = containerRectTransform.rect.height;
+		float lineTemplateHeight = lineTemplateRectTransform.rect.height;
+
+		float gapHeight = (containerHeight - lineCount * lineTemplateHeight) / (lineCount - 1);
+
 		int score = 0;
 		for (int i = 0; i < lineCount; i++)
 		{
 			Transform lineTransform = Instantiate(lineTemplate, scoresContainer);
 			RectTransform lineRectTransform = lineTransform.GetComponent<RectTransform>();
-			lineRectTransform.anchoredPosition = new Vector2(0, -templateHeight * i);
+			lineRectTransform.anchoredPosition = new Vector2(0, -(lineTemplateHeight + gapHeight) * i);
 			lineTransform.gameObject.SetActive(true);
 
 			lineTransform.Find("Line Number Text").GetComponent<TextMeshProUGUI>().text = (i + 1) + ". ";

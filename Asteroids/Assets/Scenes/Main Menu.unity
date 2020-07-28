@@ -693,7 +693,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 26.55
+  m_fontSize: 59.4
   m_fontSizeBase: 64
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -867,7 +867,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: 0
+  m_firstOverflowCharacterIndex: -1
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -1127,7 +1127,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: 0
+  m_firstOverflowCharacterIndex: -1
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -1713,7 +1713,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 60.15
+  m_fontSize: 63.2
   m_fontSizeBase: 64
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -4043,7 +4043,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 25.25
+  m_fontSize: 59.25
   m_fontSizeBase: 64
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -4458,7 +4458,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 715de3f8242e63141bbb31d14664d510, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  generalAudioMixer: {fileID: 24100000, guid: 9672009cacdc0a14a9a90b699ee895ba, type: 2}
   generalVolumeSlider: {fileID: 1546873972}
   musicVolumeSlider: {fileID: 1694167990}
   effectsVolumeSlider: {fileID: 1061970591}
@@ -4547,7 +4546,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 24.95
+  m_fontSize: 59.4
   m_fontSizeBase: 64
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -5562,7 +5561,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 31.15
+  m_fontSize: 59.2
   m_fontSizeBase: 64
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -6385,7 +6384,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 29.25
+  m_fontSize: 59.4
   m_fontSizeBase: 64
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -6864,7 +6863,6 @@ MonoBehaviour:
   scoresContainer: {fileID: 2042723835}
   lineTemplate: {fileID: 1915325689}
   lineCount: 5
-  templateHeight: 60
 --- !u!1 &1915325688
 GameObject:
   m_ObjectHideFlags: 0
