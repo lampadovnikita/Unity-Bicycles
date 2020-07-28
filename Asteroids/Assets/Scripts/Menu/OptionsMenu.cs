@@ -5,9 +5,6 @@ using UnityEngine.UI;
 public class OptionsMenu : MonoBehaviour
 {
     [SerializeField]
-    private AudioMixer generalAudioMixer = default;
-
-    [SerializeField]
     private Slider generalVolumeSlider = default;
 
     [SerializeField]
@@ -16,7 +13,14 @@ public class OptionsMenu : MonoBehaviour
     [SerializeField]
     private Slider effectsVolumeSlider = default;
 
-    public void Start()
+    private AudioManager audioManagerInstance;
+
+    private void Awake()
+    {
+        audioManagerInstance = AudioManager.Instance;
+    }
+
+    private void Start()
     {
         OptionsData data = OptionsSerializer.Load();
         if (data != null)
@@ -25,32 +29,21 @@ public class OptionsMenu : MonoBehaviour
             musicVolumeSlider.value = data.musicVolume;
             effectsVolumeSlider.value = data.effectsVolume;        
         }
-
-        SetGeneralVolume(generalVolumeSlider.value);
-        SetMusicVolume(musicVolumeSlider.value);
-        SetEffectsVolume(effectsVolumeSlider.value);
     }
 
     public void SetGeneralVolume(float volume)
     {
-        generalAudioMixer.SetFloat("GeneralVolume", ToDecibel(volume));
+        audioManagerInstance.SetGeneralVolume(volume);
     }
 
     public void SetMusicVolume(float volume)
     {
-        generalAudioMixer.SetFloat("MusicVolume", ToDecibel(volume));
+        audioManagerInstance.SetMusicVolume(volume);
     }
 
     public void SetEffectsVolume(float volume)
     {
-        generalAudioMixer.SetFloat("EffectsVolume", ToDecibel(volume));
-    }
-
-    private float ToDecibel(float volume)
-    {
-        volume = Mathf.Clamp(volume, 0.0001f, 1f);
-        
-        return 20 * Mathf.Log10(volume);
+        audioManagerInstance.SetEffectsVolume(volume);
     }
 
     public void SaveOptions()

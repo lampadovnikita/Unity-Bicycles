@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8692673469731317279}
   - component: {fileID: 8692673469731317274}
   m_Layer: 0
-  m_Name: Audio Manager
+  m_Name: AudioManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -48,6 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _MusicAudioSource: {fileID: 8692673471012104918}
   _EffectsAudioSource: {fileID: 8692673470645274378}
+  generalAudioMixer: {fileID: 24100000, guid: 9672009cacdc0a14a9a90b699ee895ba, type: 2}
 --- !u!114 &8692673469731317274
 MonoBehaviour:
   m_ObjectHideFlags: 0
