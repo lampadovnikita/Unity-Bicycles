@@ -10,8 +10,7 @@ public class HighScoresTable : MonoBehaviour
 	private Transform lineTemplate = default;
 
 	[SerializeField]
-	private int lineCount = 5;
-
+	private int linesLimit = 5;
 
 	private void Awake()
 	{
@@ -26,26 +25,23 @@ public class HighScoresTable : MonoBehaviour
 		float containerHeight = containerRectTransform.rect.height;
 		float lineTemplateHeight = lineTemplateRectTransform.rect.height;
 
+		int lineCount = Mathf.Min(linesLimit, HighScores.Instance.ScoresData.scores.Length);
+
 		float gapHeight = (containerHeight - lineCount * lineTemplateHeight) / (lineCount - 1);
 
-		int score = 0;
+		Transform lineTransform;
+		RectTransform lineRectTransform;
+		float score;
 		for (int i = 0; i < lineCount; i++)
 		{
-			Transform lineTransform = Instantiate(lineTemplate, scoresContainer);
-			RectTransform lineRectTransform = lineTransform.GetComponent<RectTransform>();
+			lineTransform = Instantiate(lineTemplate, scoresContainer);
+			lineRectTransform = lineTransform.GetComponent<RectTransform>();
 			lineRectTransform.anchoredPosition = new Vector2(0, -(lineTemplateHeight + gapHeight) * i);
 			lineTransform.gameObject.SetActive(true);
 
 			lineTransform.Find("Line Number Text").GetComponent<TextMeshProUGUI>().text = (i + 1) + ". ";
 
-			if (i < HighScores.Instance.ScoresData.scores.Length)
-			{
-				score = HighScores.Instance.ScoresData.scores[i];
-			}
-			else
-			{
-				score = 0;
-			}
+			score = HighScores.Instance.ScoresData.scores[i];
 			lineTransform.Find("Score Text").GetComponent<TextMeshProUGUI>().text = score.ToString();
 		}
 	}
