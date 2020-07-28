@@ -1661,6 +1661,11 @@ PrefabInstance:
       propertyPath: InvulnerableBlinkNumber
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 4471520897120109551, guid: 50a9877e8b78898409aedd52e20dea02,
+        type: 3}
+      propertyPath: rotationForce
+      value: 230
+      objectReference: {fileID: 0}
     - target: {fileID: 4471520897120109552, guid: 50a9877e8b78898409aedd52e20dea02,
         type: 3}
       propertyPath: m_Name
