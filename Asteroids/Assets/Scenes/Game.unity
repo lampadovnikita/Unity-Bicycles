@@ -1714,7 +1714,7 @@ PrefabInstance:
     - target: {fileID: 9064195086049626791, guid: 50a9877e8b78898409aedd52e20dea02,
         type: 3}
       propertyPath: shootForce
-      value: 3500
+      value: 4500
       objectReference: {fileID: 0}
     - target: {fileID: 9064195086049626791, guid: 50a9877e8b78898409aedd52e20dea02,
         type: 3}
