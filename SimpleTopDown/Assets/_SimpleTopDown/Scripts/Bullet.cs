@@ -15,7 +15,7 @@ namespace SimpleTopDown
 
 		public event Hide OnHide;
 
-		private Vector2 velocityBeforCollision;
+		private Vector2 velocityBeforeCollision;
 
 		private Rigidbody2D rbody;
 
@@ -35,7 +35,7 @@ namespace SimpleTopDown
 		private void FixedUpdate()
 		{
 			// This is necessary to restore the speed value after a collision
-			velocityBeforCollision = rbody.velocity;
+			velocityBeforeCollision = rbody.velocity;
 
 			if (isInFrontOfArea() == false && isWaitForHide == false)
 			{
@@ -77,7 +77,7 @@ namespace SimpleTopDown
 			float angle = Mathf.Atan2(reflection.y, reflection.x) * Mathf.Rad2Deg - 90f;
 			transform.eulerAngles = new Vector3(0f, 0f, angle);
 			
-			rbody.velocity = transform.up * velocityBeforCollision.magnitude;
+			rbody.velocity = transform.up * velocityBeforeCollision.magnitude;
 		}
 
 		// If a bullet is in front of a surface with a corresponding LayerMask,
