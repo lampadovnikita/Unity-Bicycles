@@ -4,4 +4,5 @@ In Russian, the phrase "Invent the bicycle" is analogous to the English idiom "R
 
 ## Games
 :bike: [Asteroids](./Asteroids)  
-:bike: [Simple Top-Down Shooter vs bot](./SimpleTopDown)
+:bike: [Simple Top-Down Shooter vs bot](./SimpleTopDown)  
+:bike: [Tower Blocks](./TowerBlocks)
